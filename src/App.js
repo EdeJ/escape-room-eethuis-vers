@@ -29,7 +29,7 @@ function App() {
   return (
     <div>
       <div id="shared-lists" className="row">
-        <h4 className="col-12">Shared lists</h4>
+        <h4 className="col-12">Kopjes koffie</h4>
         <div id="source-list" className="list-group col">
           <div className="list-group-item">Item 1</div>
           <div className="list-group-item">Item 2</div>
