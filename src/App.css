@@ -1,30 +1,14 @@
-#items {
-  width: 400px;
-  display: flex;
-  justify-content: space-around;
-}
-.drop {
-  width: 300px;
+
+.list-group div {
+  margin-top: 40px;
   height: 100px;
-  float: left;
-  border: 1px solid grey;
+}
+#example-left div {
+  background-color: hotpink;
+
 }
 
-li{
-  width: 100px;
-  height: 100px;
-  list-style: none;
-}
+#example-right div {
 
-#item-1{
-  background-color: blue;
-}
-#item-2{
-  background-color: greenyellow;
-}
-#item-3{
-  background-color: red;
-}
-.dragging{
-  visibility: hidden;
+  background-color: hotpink;
 }
