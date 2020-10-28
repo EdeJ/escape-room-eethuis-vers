@@ -29,13 +29,12 @@ function App() {
   return (
     <div>
       <div id="shared-lists" className="row">
-        <h4 className="col-12">Kopjes koffie</h4>
+        <h4 className="col-12">Zet de volgende koffiesoorten in de volgorde van hoeveelheid melk;</h4>
         <div id="source-list" className="list-group col">
-          <div className="list-group-item">Item 1</div>
-          <div className="list-group-item">Item 2</div>
-          <div className="list-group-item">Item 3</div>
-          <div className="list-group-item">Item 4</div>
-          <div className="list-group-item">Item 5</div>
+          <div className="list-group-item">Espresso macchiato</div>
+          <div className="list-group-item">Cappucino</div>
+          <div className="list-group-item">latte</div>
+          <div className="list-group-item">Cortado</div>
         </div>
 
         <div id="destination-list" className="list-group col">
