@@ -14,14 +14,21 @@ body {
 .list-group div {
   margin-top: 40px;
   height: 100px;
+    font-size: 2em;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+    -khtml-user-select: none; /* Konqueror */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+     user-select: none; /* Non-prefixed version, currently not supported by any browser */
 }
 
 #source-list div {
-  background-color: hotpink;
+  background-color: red;
 
 }
 
 #destination-list div {
 
-  background-color: hotpink;
+  background-color: red;
 }

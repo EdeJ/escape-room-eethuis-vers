@@ -36,16 +36,9 @@ function App() {
           <div className="list-group-item">Item 3</div>
           <div className="list-group-item">Item 4</div>
           <div className="list-group-item">Item 5</div>
-          <div className="list-group-item">Item 6</div>
         </div>
 
         <div id="destination-list" className="list-group col">
-          {/* <div className="list-group-item tinted">Item 1</div>
-          <div className="list-group-item tinted">Item 2</div>
-          <div className="list-group-item tinted">Item 3</div>
-          <div className="list-group-item tinted">Item 4</div>
-          <div className="list-group-item tinted">Item 5</div>
-          <div className="list-group-item tinted">Item 6</div> */}
         </div>
       </div>
     </div>
