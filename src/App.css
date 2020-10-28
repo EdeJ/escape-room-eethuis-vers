@@ -1,14 +1,14 @@
-
 .list-group div {
   margin-top: 40px;
   height: 100px;
 }
-#example-left div {
+
+#source-list div {
   background-color: hotpink;
 
 }
 
-#example-right div {
+#destination-list div {
 
   background-color: hotpink;
 }

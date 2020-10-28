@@ -6,38 +6,31 @@ import './App.css';
 import Sortable from "sortablejs";
 // import { Sortable, MultiDrag, Swap, OnSpill, AutoScroll } from "sortablejs";
 
-
 function App() {
 
-
   useEffect(() => {
+    const sourceList = document.getElementById("source-list");
+    const destinationList = document.getElementById("destination-list");
 
-    const exampleLeft = document.getElementById("example-left");
-    const exampleRight = document.getElementById("example-right");
-
-
-    new Sortable(exampleLeft, {
+    new Sortable(sourceList, {
       group: 'shared', // set both lists to same group
       animation: 150,
       sort: false
     });
 
-    new Sortable(exampleRight, {
+    new Sortable(destinationList, {
       group: 'shared',
       animation: 150
     });
 
-
   }, []);
-
-
 
 
   return (
     <div>
       <div id="shared-lists" className="row">
         <h4 className="col-12">Shared lists</h4>
-        <div id="example-left" className="list-group col">
+        <div id="source-list" className="list-group col">
           <div className="list-group-item">Item 1</div>
           <div className="list-group-item">Item 2</div>
           <div className="list-group-item">Item 3</div>
@@ -46,7 +39,7 @@ function App() {
           <div className="list-group-item">Item 6</div>
         </div>
 
-        <div id="example-right" className="list-group col">
+        <div id="destination-list" className="list-group col">
           {/* <div className="list-group-item tinted">Item 1</div>
           <div className="list-group-item tinted">Item 2</div>
           <div className="list-group-item tinted">Item 3</div>
