@@ -1,3 +1,16 @@
+html,
+body {
+  height: 100%;
+}
+
+.list-group {
+  border: 1px solid gray;
+  margin: 40px;
+  padding: 40px;
+  height: 800px
+}
+
+
 .list-group div {
   margin-top: 40px;
   height: 100px;
