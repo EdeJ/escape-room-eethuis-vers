@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/escape-room-eethuis-vers/static/css/main.7363b309.chunk.css",
-    "main.js": "/escape-room-eethuis-vers/static/js/main.0ed313cc.chunk.js",
-    "main.js.map": "/escape-room-eethuis-vers/static/js/main.0ed313cc.chunk.js.map",
+    "main.js": "/escape-room-eethuis-vers/static/js/main.a755331a.chunk.js",
+    "main.js.map": "/escape-room-eethuis-vers/static/js/main.a755331a.chunk.js.map",
     "runtime-main.js": "/escape-room-eethuis-vers/static/js/runtime-main.5ce562f7.js",
     "runtime-main.js.map": "/escape-room-eethuis-vers/static/js/runtime-main.5ce562f7.js.map",
     "static/css/2.95f25948.chunk.css": "/escape-room-eethuis-vers/static/css/2.95f25948.chunk.css",
@@ -20,6 +20,6 @@
     "static/css/2.95f25948.chunk.css",
     "static/js/2.7e023410.chunk.js",
     "static/css/main.7363b309.chunk.css",
-    "static/js/main.0ed313cc.chunk.js"
+    "static/js/main.a755331a.chunk.js"
   ]
 }
