@@ -28,12 +28,13 @@ function App() {
 
   return (
     <div>
+      <h4>1. Zet de volgende koffiesoorten in de volgorde van hoeveelheid melk
+          </h4>
       <div id="shared-lists" className="row">
-        <h4 className="col-12">Zet de volgende koffiesoorten in de volgorde van hoeveelheid melk;</h4>
         <div id="source-list" className="list-group col">
           <div className="list-group-item">Espresso macchiato</div>
           <div className="list-group-item">Cappucino</div>
-          <div className="list-group-item">latte</div>
+          <div className="list-group-item">Latte</div>
           <div className="list-group-item">Cortado</div>
         </div>
 
