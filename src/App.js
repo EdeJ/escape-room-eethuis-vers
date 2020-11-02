@@ -8,8 +8,6 @@ import Sortable from "sortablejs";
 function App() {
 
   const winningOrder = "3,2,1,0";
-  // let orderToCheck = [];
-
 
   useEffect(() => {
     const sourceList = document.getElementById("source-list");
@@ -19,60 +17,11 @@ function App() {
       group: 'shared', // set both lists to same group
       animation: 150,
       sort: false,
-      swap: true,
-      // onEnd: function (event) {
-      //   console.log('event.oldIndex', event.oldIndex);
-      //   console.log('event.newIndex', event.newIndex);
-      //   console.log(event.oldDraggableIndex);
-      //   console.log(event.newDraggableIndex);
-      //   console.log(event.from);
-      //   console.log(event.item.id);
-      //   orderToCheck.push(event.item.id);
-      //   console.log(orderToCheck);
-      //   // event.oldIndex; // element's old index within old parent
-      //   // event.newIndex; // element's new index within new parent
-      // },
-
     });
 
     new Sortable(destinationList, {
       group: 'shared',
       animation: 150,
-      swap: true,
-      onRemove: function (event) {
-        console.log(event.item);
-        console.log('related', event.related);
-        event.item.classList.add("hide");
-      },
-      // onEnd: function (event) {
-      //   console.log('destinationList', destinationList.childNodes);
-
-      //   console.log('event.oldIndex', event.oldIndex);
-      //   console.log('event.newIndex', event.newIndex);
-      //   console.log('fom', event.from);
-      //   console.log('to', event.to.children);
-      //   // orderToCheck.push(event.item.id);
-      //   orderToCheck[event.newIndex] = event.item.id;
-      //   console.log(orderToCheck);
-      //   // event.oldIndex; // element's old index within old parent
-      //   // event.newIndex; // element's new index within new parent
-      // },
-      // onMove: function (/**Event*/ evt, /**Event*/ originalEvent) {
-      //   console.log('move evt', evt);
-      //   console.log('move originalEvent', originalEvent);
-      //   // // Example: https://jsbin.com/nawahef/edit?js,output
-      //   // evt.dragged; // dragged HTMLElement
-      //   // evt.draggedRect; // DOMRect {left, top, right, bottom}
-      //   // evt.related; // HTMLElement on which have guided
-      //   // evt.relatedRect; // DOMRect
-      //   // evt.willInsertAfter; // Boolean that is true if Sortable will insert drag element after target by default
-      //   // originalEvent.clientY; // mouse position
-      //   // // return false; — for cancel
-      //   // // return -1; — insert before target
-      //   // // return 1; — insert after target
-      //   // // return true; — keep default insertion point based on the direction
-      //   // // return void; — keep default insertion point based on the direction
-      // },
     });
 
     function preventBehavior(e) {
@@ -107,26 +56,23 @@ function App() {
   }
 
   return (
-    <div>
-      <h4>1. Zet de volgende koffiesoorten in de volgorde van hoeveelheid melk
-          </h4>
-      <div id="shared-lists" className="row">
-        <div id="source-list" className="list-group col">
-          <div id="2" className="list-group-item">Latte</div>
-          <div id="0" className="list-group-item">Espresso macchiato</div>
-          <div id="3" className="list-group-item">Cortado</div>
-          <div id="1" className="list-group-item">Cappucino</div>
-        </div>
-
-        <div id="destination-list" className="list-group col">
-          <div id="2" className="list-group-item swap-item"></div>
-          <div id="0" className="list-group-item swap-item" ></div>
-          <div id="3" className="list-group-item swap-item"></div>
-          <div id="1" className="list-group-item swap-item"></div>
+    <>
+      <h4>1. Zet de volgende koffiesoorten in de volgorde van hoeveelheid melk</h4>
+      <button style={{ position: 'absolute', bottem: '0' }} onClick={checkAnswer} type="button" className="btn btn-lg btn-primary">Controleer Antwoord</button>
+      <div className="content">
+        <div id="shared-lists" className="row">
+          <div id="source-list" className="list-group col">
+            <div id="2" className="list-group-item">Latte</div>
+            <div id="0" className="list-group-item">Espresso macchiato</div>
+            <div id="3" className="list-group-item">Cortado</div>
+            <div id="1" className="list-group-item">Cappucino</div>
+          </div>
+          <div id="destination-list" className="list-group col">
+          </div>
         </div>
       </div>
-      {/* <button style={{ position: 'absolute', bottem: '0' }} onClick={checkAnswer} type="button" className="btn btn-lg btn-primary">Controleer Antwoord</button> */}
-    </div>
+
+    </>
   )
 }
 
