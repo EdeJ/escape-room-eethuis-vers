@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import _ from 'lodash';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 
@@ -9,7 +8,7 @@ import Sortable from "sortablejs";
 function App() {
 
   const winningOrder = "3,2,1,0";
-  let orderToCheck = [];
+  // let orderToCheck = [];
 
 
   useEffect(() => {
@@ -40,9 +39,11 @@ function App() {
       group: 'shared',
       animation: 150,
       swap: true,
-      onEnd: (event) => {
+      onRemove: function (event) {
         console.log(event.item);
-      }
+        console.log('related', event.related);
+        event.item.classList.add("hide");
+      },
       // onEnd: function (event) {
       //   console.log('destinationList', destinationList.childNodes);
 
@@ -76,7 +77,7 @@ function App() {
 
     function preventBehavior(e) {
       e.preventDefault();
-    };
+    }
 
     document.addEventListener("touchmove", preventBehavior, { passive: false });
 
