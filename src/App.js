@@ -9,6 +9,13 @@ import Sortable from "sortablejs";
 function App() {
 
   useEffect(() => {
+
+    const preventBehavior = (e) => {
+      e.preventDefault();
+    }
+
+    document.addEventListener("touchmove", preventBehavior, { passive: false });
+
     const sourceList = document.getElementById("source-list");
     const destinationList = document.getElementById("destination-list");
 
