@@ -1,12 +1,12 @@
-/* 1536 x 2048 pixels, 4:3 ratio */
+/* ipdad = 1536 x 2048 pixels, 4:3 ratio */
 @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lora:wght@600&family=Noto+Sans&display=swap');
+* {
+  padding: 0;
+  margin: 0;
+}
 html,
 body {
-  /* width: 1536
-  px;
-  height: 2048px; */
-  
   height: 100%;
   color: white;
   /* font-weight: bold; */
@@ -25,7 +25,7 @@ h4 {
   color: tomato;
   color: black;
   /* font-weight: bold; */
-  /* font-weight: bold; */
+  margin: 0;
 }
 
 body{
@@ -36,11 +36,12 @@ body{
 #source-list {
 
 }
+
 .list-group-item::after {
   font-family: 'Material Icons';
-  content: "open_with";
+  /* content: "open_with";
   content: "settings_overscan";
-  content: "sort";
+  content: "sort"; */
   content: "zoom_out_map";
   opacity: 0.6;
   font-size: 30px;
@@ -48,26 +49,32 @@ body{
 }
 
 #destination-list {
+ 
   background-color: rgba(255,255,255,0.7);
-  padding: 40px;
+  /* background-color: red; */
+  /* padding: 40px; */
 }
 
 .list-group {
-  /* border: 1px solid gray; */
-  margin: 40px;
-  /* height: 200px; */
-height: 600px;
+  height: calc(100vh - 250px);
+  /* margin: 40px;
+padding: 0 20px; */
+display: flex;
+flex-direction: column;
+justify-content: space-evenly;
 }
+
 .list-group-item {
   display: flex;
-justify-content: space-between;
-align-items: center;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
 }
 
 .list-group div {
   font-family: 'Lora', serif;
   background-color:black;
-  margin-top: 40px;
+  /* margin-top: 40px; */
   /* padding: 20px; */
   font-size: 28px;
   -webkit-touch-callout: none; /* iOS Safari */
@@ -76,4 +83,15 @@ align-items: center;
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none; /* Non-prefixed version, currently not supported by any browser */
+}
+
+#destination-list .swap-item {
+  background: none;
+}
+#destination-list .swap-item::after {
+  content: ' ';
+}
+
+.hide{
+  display: none;
 }

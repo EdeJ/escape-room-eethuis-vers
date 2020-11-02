@@ -20,6 +20,7 @@ function App() {
       group: 'shared', // set both lists to same group
       animation: 150,
       sort: false,
+      swap: true,
       // onEnd: function (event) {
       //   console.log('event.oldIndex', event.oldIndex);
       //   console.log('event.newIndex', event.newIndex);
@@ -38,6 +39,10 @@ function App() {
     new Sortable(destinationList, {
       group: 'shared',
       animation: 150,
+      swap: true,
+      onEnd: (event) => {
+        console.log(event.item);
+      }
       // onEnd: function (event) {
       //   console.log('destinationList', destinationList.childNodes);
 
@@ -113,6 +118,10 @@ function App() {
         </div>
 
         <div id="destination-list" className="list-group col">
+          <div id="2" className="list-group-item swap-item"></div>
+          <div id="0" className="list-group-item swap-item" ></div>
+          <div id="3" className="list-group-item swap-item"></div>
+          <div id="1" className="list-group-item swap-item"></div>
         </div>
       </div>
       {/* <button style={{ position: 'absolute', bottem: '0' }} onClick={checkAnswer} type="button" className="btn btn-lg btn-primary">Controleer Antwoord</button> */}
