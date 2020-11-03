@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
+import gsap from 'gsap';
+import Draggable from "gsap/Draggable";
 
 import Sortable from "sortablejs";
 // import { Sortable, MultiDrag, Swap, OnSpill, AutoScroll } from "sortablejs";
@@ -13,16 +15,40 @@ function App() {
     const sourceList = document.getElementById("source-list");
     const destinationList = document.getElementById("destination-list");
 
-    new Sortable(sourceList, {
-      group: 'shared', // set both lists to same group
-      animation: 150,
-      sort: false,
+    gsap.registerPlugin(Draggable);
+    // Draggable.create("#destination-list");
+
+
+    Draggable.create("#source-list div", {
+      type: "x,y",
+      bounds: document.getElementById("shared-lists"),
+      throwProps: true,
+      liveSnap: {
+        //snaps to the closest point in the array, but only when it's within 15px (new in GSAP 1.20.0 release):
+        points: [{ x: 508, y: (this.y) },
+        { x: 508, y: (this.y + 75) },
+        { x: 508, y: (this.y + 150) },
+        { x: 508, y: (this.y + 180) }],
+        radius: 30
+      },
+      onClick: function () {
+        console.log("clicked");
+      },
+      onDragEnd: function () {
+        console.log("drag ended");
+      }
     });
 
-    new Sortable(destinationList, {
-      group: 'shared',
-      animation: 150,
-    });
+    // new Sortable(sourceList, {
+    //   group: 'shared', // set both lists to same group
+    //   animation: 150,
+    //   sort: false,
+    // });
+
+    // new Sortable(destinationList, {
+    //   group: 'shared',
+    //   animation: 150,
+    // });
 
     function preventBehavior(e) {
       e.preventDefault();
