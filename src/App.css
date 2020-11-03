@@ -52,7 +52,7 @@ body {
 
 #destination-list {
   background-color: rgba(255, 255, 255, 0.7);
-  background: url("./images//drop.png") no-repeat rgba(255, 255, 255, 0.7);
+  background: url("./images//drop-here.png") no-repeat rgba(255, 255, 255, 0.7);
   background-position: center;
 }
 
