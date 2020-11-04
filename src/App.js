@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import gsap from 'gsap';
 import Draggable from "gsap/Draggable";
+import { ArrowsMove } from 'react-bootstrap-icons';
 
 import Sortable from "sortablejs";
 // import { Sortable, MultiDrag, Swap, OnSpill, AutoScroll } from "sortablejs";
@@ -19,48 +20,96 @@ function App() {
     // Draggable.create("#destination-list");
     const coffeeDragable = document.getElementsByClassName("list-group-item");
 
-    Draggable.create(coffeeDragable, {
+    var targets = $(".target");
+    var overlapThreshold = "0%";
+
+    // go through all the draggable objects and store their starting positions
+    // so can return to them when dragged off the targets
+
+    // var boxes = $(".box");
+    // $.each(boxes, function (i, e) {
+    //     var position = $(e).offset();
+    //     e.originalLeft = position.left - 8;
+    //     e.originalTop = position.top - 8;
+    // });
+
+    Draggable.create(".box", {
+      bounds: "#demo",
+      // edgeResistance: 0.65,
       type: "x,y",
-      bounds: document.getElementById("shared-lists"),
       throwProps: true,
-      onDrag: function () {
-        if (this.hitTest(destinationList, '')) {
-          console.log('HIT');
+      onDragStart: function (e) {
+
+      },
+
+
+      // changes the colour of the targets whilst dragging to give feedback that a
+      // dragged object is going to snap to it
+      onDrag: function (e) {
+        for (var i = 0; i < targets.length; i++) {
+          if (this.hitTest(targets[i], overlapThreshold)) {
+            $(targets[i]).addClass("showOver");
+          } else {
+            $(targets[i]).removeClass("showOver");
+          }
         }
       },
-      liveSnap: [10, 200],
-      // liveSnap: {
-      //   //snaps to the closest point in the array, but only when it's within 15px (new in GSAP 1.20.0 release):
-      //   points: [{ x: 508, y: 0 },
-      //   { x: 508, y: 60 },
-      //   { x: 508, y: 120 },
-      //   { x: 508, y: 180 }],
-      //   radius: 30
-      // },
-      onClick: function () {
-        console.log("clicked");
-      },
-      onDragEnd: function () {
-        console.log("drag ended");
+
+      onDragEnd: function (e) {
+        var snapMade = false;
+        for (var i = 0; i < targets.length; i++) {
+          if (this.hitTest(targets[i], overlapThreshold)) {
+
+            // only snap to an available target, i.e. 
+            // one without a class of "occupied"
+            if (!$(targets[i]).hasClass("occupied")) {
+
+              // get the position of the target so can move 
+              // dragging item exactly on it when released
+              var p = $(targets[i]).position();
+
+              // add a class of occupied to target to stop other items
+              // being snapped to it
+              $(targets[i]).addClass("occupied");
+
+              // tween onto target
+              gsap.to(e.target, 0.1, { left: p.left, top: p.top, x: 0, y: 0 });
+
+              // is a property called targetAttachedTo directly on the dragged item.
+              // this stores the target we have snapped to.  Allows us to free up
+              // the target if we drag it off it
+
+              // before we update that property first checks that we haven't dragged 
+              // from one target straight to another as this would balls it up
+              if (e.target.targetAttachedTo != $(targets[i]) && e.target.targetAttachedTo != undefined) {
+                e.target.targetAttachedTo.removeClass("occupied"); e.target.targetAttachedTo = undefined;
+              }
+
+              // now store new target in targetAttachedTo property
+              e.target.targetAttachedTo = $(targets[i]);
+              console.log(e.target.id);
+              console.log(e.target.targetAttachedTo[0].id);
+              snapMade = true;
+            }
+
+          }
+        }
+
+        // if the dragged item isn't over a target send it back to its
+        // start position
+        // if (!snapMade) {
+        //     if (e.target.targetAttachedTo != undefined) {
+        //         e.target.targetAttachedTo.removeClass("occupied");
+        //     };
+        //     //  gsap.to(e.target, 0.1, { x: 0, y: 0, top: e.target.originalTop, left: e.target.originalLeft });
+        // }
       }
-    });
+    })
 
-
-    // new Sortable(sourceList, {
-    //   group: 'shared', // set both lists to same group
-    //   animation: 150,
-    //   sort: false,
-    // });
-
-    // new Sortable(destinationList, {
-    //   group: 'shared',
-    //   animation: 150,
-    // });
-
+    // prevent scrolling
     function preventBehavior(e) {
       e.preventDefault();
     }
-
     document.addEventListener("touchmove", preventBehavior, { passive: false });
 
   }, []);
@@ -90,21 +139,21 @@ function App() {
 
   return (
     <>
-      <h4>1. Zet de volgende koffiesoorten in de volgorde van hoeveelheid melk</h4>
       <button style={{ position: 'absolute', bottem: '0' }} onClick={checkAnswer} type="button" className="btn btn-lg btn-primary">Controleer Antwoord</button>
+      <h4>1. Zet de volgende koffiesoorten in de volgorde van hoeveelheid melk</h4>
       <div className="content">
-        <div id="shared-lists" className="row">
-          <div id="source-list" className="list-group col">
-            <div id="2" className="box draggable">Latte</div>
-            <div id="0" className="box draggable">Espresso macchiato</div>
-            <div id="3" className="box draggable">Cortado</div>
-            <div id="1" className="box draggable">Cappucino</div>
+        <div id="shared-lists">
+          <div className="list-box" id="source-list" >
+            <div id="2" className="box draggable">Latte<ArrowsMove /></div>
+            <div id="0" className="box draggable">Espresso macchiato<ArrowsMove /></div>
+            <div id="3" className="box draggable">Cortado<ArrowsMove /></div>
+            <div id="1" className="box draggable">Cappucino<ArrowsMove /></div>
           </div>
-          <div id="destination-list" className="list-group col">
-            <div id="0" className="box draggable">target 1</div>
-            <div id="1" className="box draggable">target 1</div>
-            <div id="2" className="box draggable">target 1</div>
-            <div id="3" className="box draggable">target 1</div>
+          <div className="list-box" id="destination-list">
+            <div id="0" className="box drop-area"></div>
+            <div id="1" className="box drop-area"></div>
+            <div id="2" className="box drop-area"></div>
+            <div id="3" className="box drop-area"></div>
           </div>
         </div>
       </div>

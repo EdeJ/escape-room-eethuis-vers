@@ -36,44 +36,32 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-
-
-.draggable::after {
-  font-family: 'Material Icons';
-  /* content: "open_with";
-  content: "settings_overscan";
-  content: "sort"; */
-  content: "zoom_out_map";
-  opacity: 0.6;
-  font-size: 30px;
-  /* -webkit-font-feature-settings: 'liga'; */
-}
-
-#destination-list {
-  background-color: rgba(255, 255, 255, 0.7);
-  background: url("./images//drop-here.png") no-repeat rgba(255, 255, 255, 0.7);
-  background-position: center;
-}
-
-.list-group {
-  /* height: calc(100vh - 250px); */
-  height: 60vh;
-  padding: 20px 40px 20px 40px;
-  margin-left: 40px;
-  margin-right: 40px;
+  align-items: center;
 }
 
 #shared-lists {
-  padding: 20px;
+  display: flex;
+  height: 60vh;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.list-box {
+  max-width: 380px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .draggable {
+  font-size: 28px;
+  font-family: 'Lora';
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  cursor: pointer;
+  background-color: black;
 
   /* PREVENT TEST SELECTION */
   -webkit-touch-callout: none;
@@ -89,18 +77,16 @@ body {
   user-select: none;
   /* Non-prefixed version, currently not supported by any browser */
 }
+
 .box {
+  height: 60px;
   color: white;
-  font-family: 'Lora', serif;
-  background-color: black;
-  font-size: 28px;
+  padding: 10px 20px;
+  border: 3px solid;
+  border-radius: 20px;
 }
 
 .drop-area {
-  /* width: 100%;
-  height: 100%; */
-  /* border: 4px dotted #ddd; */
-}
-#shared-lists {
-  background-color: royalblue;;
+  border-style: dashed;
+  background-color: rgba(255, 255, 255, 0.5);
 }
