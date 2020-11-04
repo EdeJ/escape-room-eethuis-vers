@@ -17,20 +17,26 @@ function App() {
 
     gsap.registerPlugin(Draggable);
     // Draggable.create("#destination-list");
+    const coffeeDragable = document.getElementsByClassName("list-group-item");
 
-
-    Draggable.create("#source-list div", {
+    Draggable.create(coffeeDragable, {
       type: "x,y",
       bounds: document.getElementById("shared-lists"),
       throwProps: true,
-      liveSnap: {
-        //snaps to the closest point in the array, but only when it's within 15px (new in GSAP 1.20.0 release):
-        points: [{ x: 508, y: (this.y) },
-        { x: 508, y: (this.y + 75) },
-        { x: 508, y: (this.y + 150) },
-        { x: 508, y: (this.y + 180) }],
-        radius: 30
+      onDrag: function () {
+        if (this.hitTest(destinationList, '')) {
+          console.log('HIT');
+        }
       },
+      liveSnap: [10, 200],
+      // liveSnap: {
+      //   //snaps to the closest point in the array, but only when it's within 15px (new in GSAP 1.20.0 release):
+      //   points: [{ x: 508, y: 0 },
+      //   { x: 508, y: 60 },
+      //   { x: 508, y: 120 },
+      //   { x: 508, y: 180 }],
+      //   radius: 30
+      // },
       onClick: function () {
         console.log("clicked");
       },
@@ -38,6 +44,7 @@ function App() {
         console.log("drag ended");
       }
     });
+
 
     // new Sortable(sourceList, {
     //   group: 'shared', // set both lists to same group
@@ -88,12 +95,16 @@ function App() {
       <div className="content">
         <div id="shared-lists" className="row">
           <div id="source-list" className="list-group col">
-            <div id="2" className="list-group-item">Latte</div>
-            <div id="0" className="list-group-item">Espresso macchiato</div>
-            <div id="3" className="list-group-item">Cortado</div>
-            <div id="1" className="list-group-item">Cappucino</div>
+            <div id="2" className="box draggable">Latte</div>
+            <div id="0" className="box draggable">Espresso macchiato</div>
+            <div id="3" className="box draggable">Cortado</div>
+            <div id="1" className="box draggable">Cappucino</div>
           </div>
           <div id="destination-list" className="list-group col">
+            <div id="0" className="box draggable">target 1</div>
+            <div id="1" className="box draggable">target 1</div>
+            <div id="2" className="box draggable">target 1</div>
+            <div id="3" className="box draggable">target 1</div>
           </div>
         </div>
       </div>

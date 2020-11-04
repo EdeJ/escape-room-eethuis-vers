@@ -39,7 +39,7 @@ body {
 }
 
 
-.list-group-item::after {
+.draggable::after {
   font-family: 'Material Icons';
   /* content: "open_with";
   content: "settings_overscan";
@@ -68,21 +68,14 @@ body {
   padding: 20px;
 }
 
-.list-group-item {
-  color: white;
+.draggable {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 20px;
   margin-bottom: 20px;
-}
 
-.list-group div {
-  font-family: 'Lora', serif;
-  background-color: black;
-  /* margin-top: 40px; */
-  /* padding: 20px; */
-  font-size: 28px;
+  /* PREVENT TEST SELECTION */
   -webkit-touch-callout: none;
   /* iOS Safari */
   -webkit-user-select: none;
@@ -95,6 +88,12 @@ body {
   /* Internet Explorer/Edge */
   user-select: none;
   /* Non-prefixed version, currently not supported by any browser */
+}
+.box {
+  color: white;
+  font-family: 'Lora', serif;
+  background-color: black;
+  font-size: 28px;
 }
 
 .drop-area {
