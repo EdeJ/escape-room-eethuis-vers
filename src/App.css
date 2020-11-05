@@ -32,7 +32,7 @@ body {
   overflow: hidden;
 }
 
-.content {
+#content {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -65,21 +65,22 @@ body {
   background-color: black;
 
   /* PREVENT TEST SELECTION */
-  -webkit-touch-callout: none;
+  /* -webkit-touch-callout: none; */
   /* iOS Safari */
-  -webkit-user-select: none;
+  /* -webkit-user-select: none; */
   /* Chrome/Safari/Opera */
-  -khtml-user-select: none;
+  /* -khtml-user-select: none; */
   /* Konqueror */
-  -moz-user-select: none;
+  /* -moz-user-select: none; */
   /* Firefox */
-  -ms-user-select: none;
+  /* -ms-user-select: none; */
   /* Internet Explorer/Edge */
-  user-select: none;
+  /* user-select: none; */
   /* Non-prefixed version, currently not supported by any browser */
 }
 
 .box {
+  width: 380px;
   height: 60px;
   color: white;
   padding: 10px 20px;
@@ -87,11 +88,11 @@ body {
   border-radius: 20px;
 }
 
-.drop-area {
+.target {
   border-style: dashed;
   background-color: rgba(255, 255, 255, 0.5);
 }
 
-/* .position {
-  position: absolute;
-} */
+.showOver {
+  border-color: greenyellow;
+}
