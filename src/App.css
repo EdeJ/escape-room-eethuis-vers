@@ -96,3 +96,7 @@ body {
 .showOver {
   border-color: greenyellow;
 }
+
+.arrow {
+  opacity: 0.5;
+}

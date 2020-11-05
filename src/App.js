@@ -79,7 +79,7 @@ function App() {
               $(targets[i]).addClass("occupied");
 
               // tween onto target
-              gsap.to(e.target, 0.1, { left: p.left, top: p.top, x: 0, y: 0 });
+              gsap.to(e.target, { duration: 0.1, left: p.left, top: p.top, x: 0, y: 0 });
               // gsap.to(e.target, { x: p.left, y: p.top, duration: 0.5 });
 
               // is a property called targetAttachedTo directly on the dragged item.
@@ -151,10 +151,10 @@ function App() {
       <div id="content">
         <div id="shared-lists">
           <div className="list-box" id="source-list" >
-            <div id="2" className="box draggable">Latte<ArrowsMove /></div>
-            <div id="0" className="box draggable">Espresso macchiato<ArrowsMove /></div>
-            <div id="3" className="box draggable">Cortado<ArrowsMove /></div>
-            <div id="1" className="box draggable">Cappucino<ArrowsMove /></div>
+            <div id="2" className="box draggable">Latte<ArrowsMove className='arrow' /></div>
+            <div id="0" className="box draggable">Espresso macchiato<ArrowsMove className='arrow' /></div>
+            <div id="3" className="box draggable">Cortado<ArrowsMove className='arrow' /></div>
+            <div id="1" className="box draggable">Cappucino<ArrowsMove className='arrow' /></div>
           </div>
           <div className="list-box" id="destination-list">
             <div id="0" className="box target"></div>
