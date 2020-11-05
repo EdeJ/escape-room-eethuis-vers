@@ -4,6 +4,7 @@ import './App.css';
 import gsap from 'gsap';
 import Draggable from "gsap/Draggable";
 import { ArrowsMove } from 'react-bootstrap-icons';
+import $ from 'jquery';
 
 import Sortable from "sortablejs";
 // import { Sortable, MultiDrag, Swap, OnSpill, AutoScroll } from "sortablejs";
@@ -20,8 +21,26 @@ function App() {
     // Draggable.create("#destination-list");
     const coffeeDragable = document.getElementsByClassName("list-group-item");
 
-    var targets = $(".target");
-    var overlapThreshold = "0%";
+    let targets = $(".drop-area");
+    let overlapThreshold = "0%";
+
+    // const draggable = $('.draggable');
+    // const draggable2 = document.getElementsByClassName('draggable');
+    // const p = $(draggable[0]).position();
+    // console.log(p);
+    // draggable2[0].setAttribute('style', `position:absolute; left:${p.left}; top:${p.top}`);
+
+    // for (let i = 0; i < draggable.length; i++) {
+    //   // const p = $(draggable[i]).position();
+    //   // $(draggable[i]).css({ "position": "absolute", "top": p.top, "left": p.left });
+
+    // }
+
+    // for (let i = 0; i < targets.length; i++) {
+    //   console.log($(targets[i]).position());
+
+    // }
+
 
     // go through all the draggable objects and store their starting positions
     // so can return to them when dragged off the targets
@@ -33,8 +52,8 @@ function App() {
     //     e.originalTop = position.top - 8;
     // });
 
-    Draggable.create(".box", {
-      bounds: "#demo",
+    Draggable.create(".draggable", {
+      bounds: "#root",
       // edgeResistance: 0.65,
       type: "x,y",
       throwProps: true,
@@ -46,11 +65,16 @@ function App() {
       // changes the colour of the targets whilst dragging to give feedback that a
       // dragged object is going to snap to it
       onDrag: function (e) {
+
+        // $(e.target).addClass('position');
+
         for (var i = 0; i < targets.length; i++) {
           if (this.hitTest(targets[i], overlapThreshold)) {
+            console.log('hit');
             $(targets[i]).addClass("showOver");
           } else {
             $(targets[i]).removeClass("showOver");
+            $(targets[i]).removeClass("occupied");
           }
         }
       },
@@ -67,13 +91,14 @@ function App() {
               // get the position of the target so can move 
               // dragging item exactly on it when released
               var p = $(targets[i]).position();
+              console.log('position', p);
 
               // add a class of occupied to target to stop other items
               // being snapped to it
               $(targets[i]).addClass("occupied");
 
               // tween onto target
-              gsap.to(e.target, 0.1, { left: p.left, top: p.top, x: 0, y: 0 });
+              gsap.to(e.target, { x: p.left, y: p.top, duration: 0.5 });
 
               // is a property called targetAttachedTo directly on the dragged item.
               // this stores the target we have snapped to.  Allows us to free up
@@ -81,7 +106,7 @@ function App() {
 
               // before we update that property first checks that we haven't dragged 
               // from one target straight to another as this would balls it up
-              if (e.target.targetAttachedTo != $(targets[i]) && e.target.targetAttachedTo != undefined) {
+              if (e.target.targetAttachedTo !== $(targets[i]) && e.target.targetAttachedTo !== undefined) {
                 e.target.targetAttachedTo.removeClass("occupied"); e.target.targetAttachedTo = undefined;
               }
 
@@ -144,13 +169,13 @@ function App() {
       <div className="content">
         <div id="shared-lists">
           <div className="list-box" id="source-list" >
-            <div id="2" className="box draggable">Latte<ArrowsMove /></div>
+            <div id="2" style={{ "position": "absolute", "top": "300", "left": "190" }} className="box draggable">Latte<ArrowsMove /></div>
             <div id="0" className="box draggable">Espresso macchiato<ArrowsMove /></div>
             <div id="3" className="box draggable">Cortado<ArrowsMove /></div>
             <div id="1" className="box draggable">Cappucino<ArrowsMove /></div>
           </div>
           <div className="list-box" id="destination-list">
-            <div id="0" className="box drop-area"></div>
+            <div id="0" style={{ "position": "absolute", "top": "300", "left": "190" }} className="box drop-area"></div>
             <div id="1" className="box drop-area"></div>
             <div id="2" className="box drop-area"></div>
             <div id="3" className="box drop-area"></div>

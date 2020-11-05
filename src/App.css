@@ -24,6 +24,7 @@ h4 {
 body {
   background: url("./images/1280px-coffee-beans.jpg") no-repeat;
   background-size: cover;
+  position: relative;
 }
 
 #root {
@@ -90,3 +91,7 @@ body {
   border-style: dashed;
   background-color: rgba(255, 255, 255, 0.5);
 }
+
+/* .position {
+  position: absolute;
+} */
