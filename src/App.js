@@ -49,7 +49,7 @@ function App() {
       // dragged object is going to snap to it
       onDrag: function (e) {
 
-        for (var i = 0; i < targets.length; i++) {
+        for (let i = 0; i < targets.length; i++) {
           if (this.hitTest(targets[i], overlapThreshold)) {
             $(targets[i]).addClass("showOver");
           } else {
@@ -61,20 +61,14 @@ function App() {
       },
 
       onDragEnd: function (e) {
-        var snapMade = false;
-        for (var i = 0; i < targets.length; i++) {
+        // var snapMade = false;
+        for (let i = 0; i < targets.length; i++) {
           if (this.hitTest(targets[i], overlapThreshold)) {
 
-            // only snap to an available target, i.e. 
-            // one without a class of "occupied"
             if (!$(targets[i]).hasClass("occupied")) {
 
-              // get the position of the target so can move 
-              // dragging item exactly on it when released
-              var p = $(targets[i]).position();
+              let p = $(targets[i]).position();
 
-              // add a class of occupied to target to stop other items
-              // being snapped to it
               console.log('addClass("occupied")');
               $(targets[i]).addClass("occupied");
 
@@ -94,10 +88,12 @@ function App() {
               // }
 
               // now store new target in targetAttachedTo property
-              e.target.targetAttachedTo = $(targets[i]);
+
+              // e.target.targetAttachedTo = $(targets[i]);
+
               // console.log(e.target.id);
               // console.log(e.target.targetAttachedTo[0].id);
-              snapMade = true;
+              // snapMade = true;
             }
           }
         }
