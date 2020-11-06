@@ -93,8 +93,10 @@ function App() {
 
         onDragEnd: function (e) {
 
-          let x = 0;
-          let y = 0;
+          const p = $(e.target).position();
+
+          let x = p.x;
+          let y = p.y;
 
           // move to parent
           if (tile.parent) {
@@ -163,7 +165,7 @@ function App() {
   return (
     <>
       <button style={{ position: 'absolute', bottem: '0' }} onClick={checkAnswer} type="button" className="btn btn-lg btn-primary">Controleer Antwoord</button>
-      <h4>1. Zet de volgende koffiesoorten in de volgorde van hoeveelheid melk (versie 3)</h4>
+      <h4>1. Zet de volgende koffiesoorten in de volgorde van hoeveelheid melk (versie 4)</h4>
       <div id="content">
         <div id="shared-lists">
           <div className="list-box" id="source-list" >
