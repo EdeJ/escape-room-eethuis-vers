@@ -126,7 +126,7 @@ function App() {
   return (
     <>
       <button style={{ position: 'absolute', bottem: '0' }} onClick={checkAnswer} type="button" className="btn btn-lg btn-primary">Controleer Antwoord</button>
-      <h4>1. Zet de volgende koffiesoorten in de volgorde van hoeveelheid melk</h4>
+      <h4>1. Zet de volgende koffiesoorten in de volgorde van hoeveelheid melk (versie 2)</h4>
       <div id="content">
         <div id="shared-lists">
           <div className="list-box" id="source-list" >
