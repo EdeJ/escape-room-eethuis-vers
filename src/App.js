@@ -6,9 +6,6 @@ import Draggable from "gsap/Draggable";
 import { ArrowsMove } from 'react-bootstrap-icons';
 import $ from 'jquery';
 
-import Sortable from "sortablejs";
-// import { Sortable, MultiDrag, Swap, OnSpill, AutoScroll } from "sortablejs";
-
 function App() {
   gsap.registerPlugin(Draggable);
   const winningOrder = "3,2,1,0";
@@ -21,8 +18,6 @@ function App() {
     const targets = $(".target");
     const draggables = $('.draggable');
     const overlapThreshold = "0%";
-
-    // console.log('#shared-lists height: ', $('#shared-lists').height());
 
     let top = $('#shared-lists').offset().top + $('.draggable').height();
     const dragList = $('#source-list');
@@ -44,9 +39,6 @@ function App() {
 
       },
 
-
-      // changes the colour of the targets whilst dragging to give feedback that a
-      // dragged object is going to snap to it
       onDrag: function (e) {
 
         for (let i = 0; i < targets.length; i++) {
@@ -54,8 +46,9 @@ function App() {
             $(targets[i]).addClass("showOver");
           } else {
             $(targets[i]).removeClass("showOver");
-            $(e.target.targetAttachedTo).removeClass("occupied");
-
+          }
+          if (e.target.id === $(targets[i]).data('dragItemId')) {
+            $(targets[i]).removeClass("occupied");
           }
         }
       },
@@ -74,26 +67,15 @@ function App() {
 
               // tween onto target
               gsap.to(e.target, { duration: 0.1, left: p.left, top: p.top, x: 0, y: 0 });
-              // gsap.to(e.target, { x: p.left, y: p.top, duration: 0.5 });
+              // $(targets[i]).data('dragItem', e.target);
 
-              // is a property called targetAttachedTo directly on the dragged item.
-              // this stores the target we have snapped to.  Allows us to free up
-              // the target if we drag it off it
+              $(targets[i]).data('dragItemId', e.target.id);
+              // $('#0').data('myval', 20); //setter
+              // console.log($(targets[i]).data('dragItem'));
+              // let test = $(targets[i]).data('dragItem')
+              // $(test).css('background-color', 'red');
+              // console.log(test);
 
-              // before we update that property first checks that we haven't dragged 
-              // from one target straight to another as this would balls it up
-              // if (e.target.targetAttachedTo != $(targets[i]) && e.target.targetAttachedTo != undefined) {
-              //   e.target.targetAttachedTo.removeClass("occupied");
-              //   e.target.targetAttachedTo = undefined;
-              // }
-
-              // now store new target in targetAttachedTo property
-
-              // e.target.targetAttachedTo = $(targets[i]);
-
-              // console.log(e.target.id);
-              // console.log(e.target.targetAttachedTo[0].id);
-              // snapMade = true;
             }
           }
         }
@@ -106,6 +88,7 @@ function App() {
         //     };
         //     //  gsap.to(e.target, 0.1, { x: 0, y: 0, top: e.target.originalTop, left: e.target.originalLeft });
         // }
+        console.log('All targets: ', targets);
       }
     })
 
