@@ -8,16 +8,26 @@ import $ from 'jquery';
 
 function App() {
   gsap.registerPlugin(Draggable);
-  const winningOrder = "3,2,1,0";
 
   useEffect(() => {
-    const sourceList = document.getElementById("source-list");
-    const destinationList = document.getElementById("destination-list");
-    const coffeeDragable = document.getElementsByClassName("list-group-item");
+    const overlapThreshold = "0%";
 
     const targets = $(".target");
     const draggables = $('.draggable');
-    const overlapThreshold = "0%";
+
+    const dragElements = document.querySelectorAll(".draggable");
+    const dropElements = document.querySelectorAll(".target");
+    const dragTiles = Array.prototype.map.call(dragElements, createDragTile);
+    const dropTiles = Array.prototype.map.call(dropElements, createDropTile);
+
+    function createDropTile(element, index) {
+      const tile = {
+        element: element,
+        child: null,
+        value: element.dataset.value
+      };
+      return tile;
+    }
 
     let top = $('#shared-lists').offset().top + $('.draggable').height();
     const dragList = $('#source-list');
@@ -30,67 +40,94 @@ function App() {
       top = top + distance;
     }
 
-    Draggable.create(".draggable", {
-      bounds: "#content",
-      // edgeResistance: 0.65,
-      type: "x,y",
-      throwProps: true,
-      onDragStart: function (e) {
+    function createDragTile(element, index) {
 
-      },
+      const tile = {
+        element: element,
+        parent: null,
+        value: element.dataset.value
+      };
 
-      onDrag: function (e) {
 
-        for (let i = 0; i < targets.length; i++) {
-          if (this.hitTest(targets[i], overlapThreshold)) {
-            $(targets[i]).addClass("showOver");
-          } else {
-            $(targets[i]).removeClass("showOver");
+      Draggable.create(element, {
+        bounds: "#content",
+        // edgeResistance: 0.65,
+        type: "x,y",
+        throwProps: true,
+        onDragStart: function (e) {
+          element.classList.remove("correct", "wrong");
+        },
+
+        onDrag: function (e) {
+          let parent = tile.parent;
+          if (parent) {
+            if (this.hitTest(parent.element, overlapThreshold)) {
+              // exit the function
+              // tile is still hitting parent, so no need to proceed any further.
+              return;
+            }
+            // tile is no longer hitting parent, so clear any references between the two
+            parent = tile.parent = parent.child = null;
           }
-          if (e.target.id === $(targets[i]).data('dragItemId')) {
-            $(targets[i]).removeClass("occupied");
-          }
-        }
-      },
 
-      onDragEnd: function (e) {
-        // var snapMade = false;
-        for (let i = 0; i < targets.length; i++) {
-          if (this.hitTest(targets[i], overlapThreshold)) {
+          for (let i = 0; i < dropTiles.length; i++) {
+            const dropTile = dropTiles[i];
+            if (dropTile.child) {
+              // continue to next loop iteration
+              // drop tile already has a child, so no need to proceed any further
+              continue;
+            }
 
-            if (!$(targets[i]).hasClass("occupied")) {
+            if (this.hitTest(dropTile.element, overlapThreshold)) {
 
-              let p = $(targets[i]).position();
-
-              console.log('addClass("occupied")');
-              $(targets[i]).addClass("occupied");
-
-              // tween onto target
-              gsap.to(e.target, { duration: 0.1, left: p.left, top: p.top, x: 0, y: 0 });
-              // $(targets[i]).data('dragItem', e.target);
-
-              $(targets[i]).data('dragItemId', e.target.id);
-              // $('#0').data('myval', 20); //setter
-              // console.log($(targets[i]).data('dragItem'));
-              // let test = $(targets[i]).data('dragItem')
-              // $(test).css('background-color', 'red');
-              // console.log(test);
-
+              // we hit an empty drop tile, so link the two together and exit the function
+              tile.parent = dropTile;
+              dropTile.child = tile;
+              element.classList.add("hitting");
+              return;
             }
           }
-        }
+          // if we made it this far, we're not hitting an empty drop tile
+          element.classList.remove("hitting");
+        },
 
-        // if the dragged item isn't over a target send it back to its
-        // start position
-        // if (!snapMade) {
-        //     if (e.target.targetAttachedTo != undefined) {
-        //         e.target.targetAttachedTo.removeClass("occupied");
-        //     };
-        //     //  gsap.to(e.target, 0.1, { x: 0, y: 0, top: e.target.originalTop, left: e.target.originalLeft });
-        // }
-        console.log('All targets: ', targets);
-      }
-    })
+        onDragEnd: function (e) {
+
+          let x = 0;
+          let y = 0;
+
+          // move to parent
+          if (tile.parent) {
+
+            const rect1 = element.getBoundingClientRect();
+            const rect2 = tile.parent.element.getBoundingClientRect();
+
+            x = "+=" + (rect2.left - rect1.left);
+            y = "+=" + (rect2.top - rect1.top);
+          }
+
+          gsap.to(e.target, { duration: 0.1, x: x, y: y });
+          return tile;
+        }
+      });
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+
+
+
+
 
     // prevent scrolling
     function preventBehavior(e) {
@@ -118,7 +155,7 @@ function App() {
     // }, []);
     const newArray = myArray.map(node => (node.id));
     console.log('TO STRING' + newArray.toString());
-    console.log('is EQUEL??? : ' + (newArray.toString() === winningOrder));
+    // console.log('is EQUEL??? : ' + (newArray.toString() === winningOrder));
 
     console.log('reduced array', newArray);
   }
@@ -126,7 +163,7 @@ function App() {
   return (
     <>
       <button style={{ position: 'absolute', bottem: '0' }} onClick={checkAnswer} type="button" className="btn btn-lg btn-primary">Controleer Antwoord</button>
-      <h4>1. Zet de volgende koffiesoorten in de volgorde van hoeveelheid melk (versie 2)</h4>
+      <h4>1. Zet de volgende koffiesoorten in de volgorde van hoeveelheid melk (versie 3)</h4>
       <div id="content">
         <div id="shared-lists">
           <div className="list-box" id="source-list" >

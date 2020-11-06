@@ -42,7 +42,7 @@ body {
 
 #shared-lists {
   display: flex;
-  height: 80vh;
+  height: 70vh;
   width: 100%;
   justify-content: space-evenly;
 }
