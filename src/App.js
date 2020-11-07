@@ -21,7 +21,7 @@ function App() {
   return (
     <div>
       {showDragGame || (
-        <button onClick={() => setShowDragGame(true)} type="button" className="btn btn-primary">play drag game</button>
+        <button onClick={() => setShowDragGame(true)} type="button" className="btn btn-lg btn-primary">play drag game</button>
       )}
       {(!dragGameFinished && showDragGame) && <DragGame setFinished={setFinished} />}
       {dragGameFinished && <h1 style={{ color: 'white' }} >drag game finished!</h1>}
