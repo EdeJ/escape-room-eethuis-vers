@@ -7,12 +7,12 @@ import $ from 'jquery';
 
 import './App.css';
 
-function Tiles({ tileData }) {
+function Tiles({ tileData, checkAllCorrect }) {
 
     gsap.registerPlugin(Draggable);
 
     const [allTilesDroped, setAllTilesDroped] = useState(false);
-    const [allCorrect, setAllCorrect] = useState(false);
+    // const [allCorrect, setAllCorrect] = useState(false);
 
     useEffect(() => {
         const overlapThreshold = "10%";
@@ -51,11 +51,12 @@ function Tiles({ tileData }) {
                 console.log('ALLES GOED!!!');
                 $('.draggable').addClass('correct');
                 $('.draggable').removeClass('wrong');
-                setAllCorrect(true);
+                setTimeout(function () { checkAllCorrect(true); }, 3000);
+
             } else {
                 $('.draggable').addClass('wrong');
                 $('.draggable').removeClass('correct');
-                setAllCorrect(false);
+                checkAllCorrect(false);
             }
         }
 
