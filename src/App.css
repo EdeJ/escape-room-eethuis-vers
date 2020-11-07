@@ -12,13 +12,14 @@ body {
   height: 100%;
 }
 
-h4 {
+header {
   font-family: 'Noto Sans', sans-serif;
   background-color: whitesmoke;
-  padding: 20px 40px;
-  color: tomato;
   color: black;
-  margin: 0;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 body {
@@ -29,11 +30,16 @@ body {
 
 #root {
   height: 100%;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 #content {
-  height: 100%;
+  position: absolute;
+  top:80px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -41,6 +47,7 @@ body {
 }
 
 #shared-lists {
+  position: relative;
   display: flex;
   height: 70vh;
   width: 100%;
@@ -65,17 +72,17 @@ body {
   background-color: black;
 
   /* PREVENT TEST SELECTION */
-  /* -webkit-touch-callout: none; */
+  -webkit-touch-callout: none;
   /* iOS Safari */
-  /* -webkit-user-select: none; */
+  -webkit-user-select: none;
   /* Chrome/Safari/Opera */
-  /* -khtml-user-select: none; */
+  -khtml-user-select: none;
   /* Konqueror */
-  /* -moz-user-select: none; */
+  -moz-user-select: none;
   /* Firefox */
-  /* -ms-user-select: none; */
+  -ms-user-select: none;
   /* Internet Explorer/Edge */
-  /* user-select: none; */
+  user-select: none;
   /* Non-prefixed version, currently not supported by any browser */
 }
 
@@ -89,14 +96,16 @@ body {
 }
 
 .target {
-  border-style: dashed;
+  border-style: none;
   background-color: rgba(255, 255, 255, 0.5);
 }
-
-.showOver {
+/* .showOver {
   border-color: greenyellow;
+} */
+.hitting {
+/* border-color:  greenyellow; */
+border-style: dashed; 
 }
-
 .arrow {
   opacity: 0.5;
 }

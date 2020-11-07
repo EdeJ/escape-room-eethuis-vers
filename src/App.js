@@ -10,7 +10,7 @@ function App() {
   gsap.registerPlugin(Draggable);
 
   useEffect(() => {
-    const overlapThreshold = "0%";
+    const overlapThreshold = "10%";
 
     const targets = $(".target");
     const draggables = $('.draggable');
@@ -29,7 +29,8 @@ function App() {
       return tile;
     }
 
-    let top = $('#shared-lists').offset().top + $('.draggable').height();
+    // let top = $('#shared-lists').offset().top + $('.draggable').height();
+    let top = 30; // de helft van de hoogte van een draggable, om het te centreren.
     const dragList = $('#source-list');
     const dropList = $('#destination-list');
     const distance = $('#shared-lists').height() / 4;
@@ -41,7 +42,7 @@ function App() {
     }
 
     function createDragTile(element, index) {
-
+      console.log(element);
       const tile = {
         element: element,
         parent: null,
@@ -83,20 +84,22 @@ function App() {
               // we hit an empty drop tile, so link the two together and exit the function
               tile.parent = dropTile;
               dropTile.child = tile;
-              element.classList.add("hitting");
+              tile.parent.element.classList.add("hitting");
               return;
             }
           }
           // if we made it this far, we're not hitting an empty drop tile
-          element.classList.remove("hitting");
+          targets.removeClass("hitting");
         },
 
-        onDragEnd: function (e) {
+        onDragEnd: function () {
 
-          const p = $(e.target).position();
+          // const p = $(element).position();
 
-          let x = p.x;
-          let y = p.y;
+          // let x = p.x;
+          // let y = p.y;
+          let x = 0;
+          let y = 0;
 
           // move to parent
           if (tile.parent) {
@@ -108,8 +111,11 @@ function App() {
             y = "+=" + (rect2.top - rect1.top);
           }
 
-          gsap.to(e.target, { duration: 0.1, x: x, y: y });
+          gsap.to(element, { duration: 0.2, x: x, y: y });
+          // function returnTile() {
+          //   console.log('returnTile');
           return tile;
+          //}
         }
       });
 
@@ -164,8 +170,9 @@ function App() {
 
   return (
     <>
-      <button style={{ position: 'absolute', bottem: '0' }} onClick={checkAnswer} type="button" className="btn btn-lg btn-primary">Controleer Antwoord</button>
-      <h4>1. Zet de volgende koffiesoorten in de volgorde van hoeveelheid melk (versie 4)</h4>
+      <header>
+        <h4>1. Zet de volgende koffiesoorten in de volgorde van hoeveelheid melk (versie 4)</h4>
+      </header>
       <div id="content">
         <div id="shared-lists">
           <div className="list-box" id="source-list" >
@@ -181,6 +188,7 @@ function App() {
             <div id="3" className="box target"></div>
           </div>
         </div>
+        <button style={{ position: 'absolute', bottem: '0' }} onClick={checkAnswer} type="button" className="btn btn-lg btn-primary">Controleer Antwoord</button>
       </div>
 
     </>
