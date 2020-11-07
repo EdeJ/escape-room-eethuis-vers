@@ -156,7 +156,7 @@ function App() {
   return (
     <>
       <header>
-        <h4>1. Zet de volgende koffiesoorten in de volgorde van hoeveelheid melk (versie 4)</h4>
+        <h4>1. Zet de volgende koffiesoorten in de volgorde van hoeveelheid melk (versie 5)</h4>
       </header>
       <div id="content">
         <div id="shared-lists">
