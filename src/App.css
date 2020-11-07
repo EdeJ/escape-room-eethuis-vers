@@ -20,6 +20,9 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  /* DISABLE DUBBLE TAP ZOOM ON ANDROID */
+  touch-action: manipulation;
 }
 
 body {
@@ -32,11 +35,19 @@ body {
 #root {
   height: 100%;
   /* overflow: hidden; */
+
+  /* PREVENT TEXT SELECTION */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 #content {
   position: absolute;
-  top:80px;
+  top: 80px;
   left: 0;
   bottom: 0;
   right: 0;
@@ -71,20 +82,6 @@ body {
   align-items: center;
   cursor: pointer;
   background-color: black;
-
-  /* PREVENT TEXT SELECTION *
-  -webkit-touch-callout: none;
-  /* iOS Safari */
-  -webkit-user-select: none;
-  /* Chrome/Safari/Opera */
-  -khtml-user-select: none;
-  /* Konqueror */
-  -moz-user-select: none;
-  /* Firefox */
-  -ms-user-select: none;
-  /* Internet Explorer/Edge */
-  user-select: none;
-  /* Non-prefixed version, currently not supported by any browser */
 }
 
 .box {
@@ -92,21 +89,36 @@ body {
   height: 60px;
   color: white;
   padding: 10px 20px;
-  border: 3px solid;
+  /* border: 3px solid; */
   border-radius: 20px;
 }
 
 .target {
   border-style: none;
   background-color: rgba(255, 255, 255, 0.5);
+  border-style: dashed;
 }
-/* .showOver {
-  border-color: greenyellow;
-} */
+
 .hitting {
-/* border-color:  greenyellow; */
-border-style: dashed; 
+  background-color: rgba(255, 255, 255, 0.2)
 }
+
 .arrow {
   opacity: 0.5;
+}
+
+#content button {
+  display: none;
+}
+
+#content .showBtn {
+  display: block;
+}
+
+.wrong {
+  background-color: red;
+}
+
+.correct {
+  background-color: green;
 }
