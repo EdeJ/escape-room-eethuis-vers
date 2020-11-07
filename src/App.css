@@ -21,6 +21,8 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  /* DISABLE DUBBLE TAP ZOOM ON ANDROID */
+  touch-action: manipulation;
 }
 
 body {
