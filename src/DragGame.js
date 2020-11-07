@@ -30,7 +30,7 @@ function DragGame({ setFinished }) {
     return (
         <>
             <header>
-                <div>all Correct: {allCorrect ? 'YES' : 'NO'}</div>
+                {/* <div>all Correct: {allCorrect ? 'YES' : 'NO'}</div> */}
                 <h4>1. Zet de volgende koffiesoorten in de volgorde van hoeveelheid melk (versie 7-11)</h4>
             </header>
             <Tiles tileData={tileData} checkAllCorrect={checkAllCorrect} />
