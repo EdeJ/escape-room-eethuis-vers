@@ -1,79 +1,112 @@
-/* 1536 x 2048 pixels, 4:3 ratio */
+/* ipdad = 1536 x 2048 pixels, 4:3 ratio */
 @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lora:wght@600&family=Noto+Sans&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
 html,
 body {
-  /* width: 1536
-  px;
-  height: 2048px; */
-  
   height: 100%;
-  color: white;
-  /* font-weight: bold; */
 }
-.list-group-item {
-  width: 100%;;
-}
-/* .material-icons {
-  float: rigth !important;
-} */
 
-h4 {
+header {
   font-family: 'Noto Sans', sans-serif;
   background-color: whitesmoke;
-  padding: 20px 40px;
-  color: tomato;
   color: black;
-  /* font-weight: bold; */
-  /* font-weight: bold; */
-}
-
-body{
-  background: url("./images/1280px-coffee-beans.jpg") no-repeat;
-  background-size:cover;
-}
-
-#source-list {
-
-}
-.list-group-item::after {
-  font-family: 'Material Icons';
-  content: "open_with";
-  content: "settings_overscan";
-  content: "sort";
-  content: "zoom_out_map";
-  opacity: 0.6;
-  font-size: 30px;
-  /* -webkit-font-feature-settings: 'liga'; */
-}
-
-#destination-list {
-  background-color: rgba(255,255,255,0.7);
-  padding: 40px;
-}
-
-.list-group {
-  /* border: 1px solid gray; */
-  margin: 40px;
-  /* height: 200px; */
-height: 600px;
-}
-.list-group-item {
+  height: 80px;
   display: flex;
-justify-content: space-between;
-align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.list-group div {
-  font-family: 'Lora', serif;
-  background-color:black;
-  margin-top: 40px;
-  /* padding: 20px; */
+body {
+  background: url("./images/1280px-coffee-beans.jpg") no-repeat;
+  background-size: cover;
+
+  position: relative;
+}
+
+#root {
+  height: 100%;
+  /* overflow: hidden; */
+}
+
+#content {
+  position: absolute;
+  top:80px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#shared-lists {
+  position: relative;
+  display: flex;
+  height: 70vh;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.list-box {
+  max-width: 380px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.draggable {
   font-size: 28px;
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Chrome/Safari/Opera */
-  -khtml-user-select: none; /* Konqueror */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none; /* Non-prefixed version, currently not supported by any browser */
+  font-family: 'Lora';
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  background-color: black;
+
+  /* PREVENT TEXT SELECTION *
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Chrome/Safari/Opera */
+  -khtml-user-select: none;
+  /* Konqueror */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently not supported by any browser */
+}
+
+.box {
+  width: 380px;
+  height: 60px;
+  color: white;
+  padding: 10px 20px;
+  border: 3px solid;
+  border-radius: 20px;
+}
+
+.target {
+  border-style: none;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+/* .showOver {
+  border-color: greenyellow;
+} */
+.hitting {
+/* border-color:  greenyellow; */
+border-style: dashed; 
+}
+.arrow {
+  opacity: 0.5;
 }

@@ -1,78 +1,131 @@
 import { useEffect } from 'react';
-import _ from 'lodash';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
-
-import Sortable from "sortablejs";
-// import { Sortable, MultiDrag, Swap, OnSpill, AutoScroll } from "sortablejs";
+import gsap from 'gsap';
+import Draggable from "gsap/Draggable";
+import { ArrowsMove } from 'react-bootstrap-icons';
+import $ from 'jquery';
 
 function App() {
-
-  const winningOrder = "3,2,1,0";
-  let orderToCheck = [];
-
+  gsap.registerPlugin(Draggable);
 
   useEffect(() => {
-    const sourceList = document.getElementById("source-list");
-    const destinationList = document.getElementById("destination-list");
+    const overlapThreshold = "10%";
 
-    new Sortable(sourceList, {
-      group: 'shared', // set both lists to same group
-      animation: 150,
-      sort: false,
-      // onEnd: function (event) {
-      //   console.log('event.oldIndex', event.oldIndex);
-      //   console.log('event.newIndex', event.newIndex);
-      //   console.log(event.oldDraggableIndex);
-      //   console.log(event.newDraggableIndex);
-      //   console.log(event.from);
-      //   console.log(event.item.id);
-      //   orderToCheck.push(event.item.id);
-      //   console.log(orderToCheck);
-      //   // event.oldIndex; // element's old index within old parent
-      //   // event.newIndex; // element's new index within new parent
-      // },
+    const targets = $(".target");
+    const draggables = $('.draggable');
 
-    });
+    const dragElements = document.querySelectorAll(".draggable");
+    const dropElements = document.querySelectorAll(".target");
+    const dragTiles = Array.prototype.map.call(dragElements, createDragTile);
+    const dropTiles = Array.prototype.map.call(dropElements, createDropTile);
 
-    new Sortable(destinationList, {
-      group: 'shared',
-      animation: 150,
-      // onEnd: function (event) {
-      //   console.log('destinationList', destinationList.childNodes);
+    function createDropTile(element, index) {
+      const tile = {
+        element: element,
+        child: null,
+        value: element.dataset.value
+      };
+      return tile;
+    }
 
-      //   console.log('event.oldIndex', event.oldIndex);
-      //   console.log('event.newIndex', event.newIndex);
-      //   console.log('fom', event.from);
-      //   console.log('to', event.to.children);
-      //   // orderToCheck.push(event.item.id);
-      //   orderToCheck[event.newIndex] = event.item.id;
-      //   console.log(orderToCheck);
-      //   // event.oldIndex; // element's old index within old parent
-      //   // event.newIndex; // element's new index within new parent
-      // },
-      // onMove: function (/**Event*/ evt, /**Event*/ originalEvent) {
-      //   console.log('move evt', evt);
-      //   console.log('move originalEvent', originalEvent);
-      //   // // Example: https://jsbin.com/nawahef/edit?js,output
-      //   // evt.dragged; // dragged HTMLElement
-      //   // evt.draggedRect; // DOMRect {left, top, right, bottom}
-      //   // evt.related; // HTMLElement on which have guided
-      //   // evt.relatedRect; // DOMRect
-      //   // evt.willInsertAfter; // Boolean that is true if Sortable will insert drag element after target by default
-      //   // originalEvent.clientY; // mouse position
-      //   // // return false; — for cancel
-      //   // // return -1; — insert before target
-      //   // // return 1; — insert after target
-      //   // // return true; — keep default insertion point based on the direction
-      //   // // return void; — keep default insertion point based on the direction
-      // },
-    });
+    // let top = $('#shared-lists').offset().top + $('.draggable').height();
+    let top = 30; // de helft van de hoogte van een draggable, om het te centreren.
+    const dragList = $('#source-list');
+    const dropList = $('#destination-list');
+    const distance = $('#shared-lists').height() / 4;
 
+    for (let i = 0; i < draggables.length; i++) {
+      $(draggables[i]).css({ "position": "absolute", "top": `${top}px`, "left": `${dragList.left}px` });
+      $(targets[i]).css({ "position": "absolute", "top": `${top}px`, "left": `${dropList.left}px` });
+      top = top + distance;
+    }
+
+    function createDragTile(element, index) {
+      console.log(element);
+      const tile = {
+        element: element,
+        parent: null,
+        value: element.dataset.value
+      };
+
+
+      Draggable.create(element, {
+        bounds: "#content",
+        // edgeResistance: 0.65,
+        type: "x,y",
+        throwProps: true,
+        onDragStart: function (e) {
+          element.classList.remove("correct", "wrong");
+        },
+
+        onDrag: function (e) {
+          let parent = tile.parent;
+          if (parent) {
+            if (this.hitTest(parent.element, overlapThreshold)) {
+              // exit the function
+              // tile is still hitting parent, so no need to proceed any further.
+              return;
+            }
+            // tile is no longer hitting parent, so clear any references between the two
+            parent = tile.parent = parent.child = null;
+          }
+
+          for (let i = 0; i < dropTiles.length; i++) {
+            const dropTile = dropTiles[i];
+            if (dropTile.child) {
+              // continue to next loop iteration
+              // drop tile already has a child, so no need to proceed any further
+              continue;
+            }
+
+            if (this.hitTest(dropTile.element, overlapThreshold)) {
+
+              // we hit an empty drop tile, so link the two together and exit the function
+              tile.parent = dropTile;
+              dropTile.child = tile;
+              tile.parent.element.classList.add("hitting");
+              return;
+            }
+          }
+          // if we made it this far, we're not hitting an empty drop tile
+          targets.removeClass("hitting");
+        },
+
+        onDragEnd: function () {
+
+          // const p = $(element).position();
+
+          // let x = p.x;
+          // let y = p.y;
+          let x = 0;
+          let y = 0;
+
+          // move to parent
+          if (tile.parent) {
+
+            const rect1 = element.getBoundingClientRect();
+            const rect2 = tile.parent.element.getBoundingClientRect();
+
+            x = "+=" + (rect2.left - rect1.left);
+            y = "+=" + (rect2.top - rect1.top);
+          }
+
+          gsap.to(element, { duration: 0.2, x: x, y: y });
+          // function returnTile() {
+          //   console.log('returnTile');
+          return tile;
+          //}
+        }
+      });
+
+    }
+
+
+    // prevent scrolling
     function preventBehavior(e) {
       e.preventDefault();
-    };
-
+    }
     document.addEventListener("touchmove", preventBehavior, { passive: false });
 
   }, []);
@@ -95,28 +148,35 @@ function App() {
     // }, []);
     const newArray = myArray.map(node => (node.id));
     console.log('TO STRING' + newArray.toString());
-    console.log('is EQUEL??? : ' + (newArray.toString() === winningOrder));
+    // console.log('is EQUEL??? : ' + (newArray.toString() === winningOrder));
 
     console.log('reduced array', newArray);
   }
 
   return (
-    <div>
-      <h4>1. Zet de volgende koffiesoorten in de volgorde van hoeveelheid melk
-          </h4>
-      <div id="shared-lists" className="row">
-        <div id="source-list" className="list-group col">
-          <div id="2" className="list-group-item">Latte</div>
-          <div id="0" className="list-group-item">Espresso macchiato</div>
-          <div id="3" className="list-group-item">Cortado</div>
-          <div id="1" className="list-group-item">Cappucino</div>
+    <>
+      <header>
+        <h4>1. Zet de volgende koffiesoorten in de volgorde van hoeveelheid melk (versie 5)</h4>
+      </header>
+      <div id="content">
+        <div id="shared-lists">
+          <div className="list-box" id="source-list" >
+            <div id="2" className="box draggable">Latte<ArrowsMove className='arrow' /></div>
+            <div id="0" className="box draggable">Espresso macchiato<ArrowsMove className='arrow' /></div>
+            <div id="3" className="box draggable">Cortado<ArrowsMove className='arrow' /></div>
+            <div id="1" className="box draggable">Cappucino<ArrowsMove className='arrow' /></div>
+          </div>
+          <div className="list-box" id="destination-list">
+            <div id="0" className="box target"></div>
+            <div id="1" className="box target"></div>
+            <div id="2" className="box target"></div>
+            <div id="3" className="box target"></div>
+          </div>
         </div>
-
-        <div id="destination-list" className="list-group col">
-        </div>
+        <button style={{ position: 'absolute', bottem: '0' }} onClick={checkAnswer} type="button" className="btn btn-lg btn-primary">Controleer Antwoord</button>
       </div>
-      {/* <button style={{ position: 'absolute', bottem: '0' }} onClick={checkAnswer} type="button" className="btn btn-lg btn-primary">Controleer Antwoord</button> */}
-    </div>
+
+    </>
   )
 }
 
