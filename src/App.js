@@ -119,22 +119,7 @@ function App() {
         }
       });
 
-
-
-
-
-
-
-
-
-
-
-
-
     }
-
-
-
 
 
     // prevent scrolling

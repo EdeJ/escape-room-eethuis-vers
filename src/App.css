@@ -25,6 +25,7 @@ header {
 body {
   background: url("./images/1280px-coffee-beans.jpg") no-repeat;
   background-size: cover;
+
   position: relative;
 }
 
@@ -71,7 +72,7 @@ body {
   cursor: pointer;
   background-color: black;
 
-  /* PREVENT TEST SELECTION */
+  /* PREVENT TEXT SELECTION *
   -webkit-touch-callout: none;
   /* iOS Safari */
   -webkit-user-select: none;
