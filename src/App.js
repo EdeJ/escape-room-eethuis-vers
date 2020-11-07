@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import Tiles from './Tiles';
+import { useEffect, useState } from 'react';
+import DragGame from './DragGame';
 
 function App() {
 
@@ -9,32 +9,15 @@ function App() {
   }
   document.addEventListener("touchmove", preventBehavior, { passive: false });
 
-  const tileData = [
-    {
-      order: 2,
-      name: '2 Latte'
-    }, {
-      order: 0,
-      name: '0 Espresso macchiato'
-    },
-    {
-      order: 3,
-      name: '3 Cortado'
-    },
-    {
-      order: 1,
-      name: '1 Cappucino'
-    }
-  ];
+  const [showDragGame, setShowDragGame] = useState(false);
 
   return (
-    <>
-      <header>
-        <h4>1. Zet de volgende koffiesoorten in de volgorde van hoeveelheid melk (versie 7-11)</h4>
-      </header>
-      <Tiles tileData={tileData} />
-
-    </>
+    <div>
+      {showDragGame || (
+        <button onClick={() => setShowDragGame(true)} type="button" className="btn btn-primary">play drag game</button>
+      )}
+      {showDragGame && <DragGame />}
+    </div>
   )
 }
 
