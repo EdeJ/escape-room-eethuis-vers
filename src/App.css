@@ -127,7 +127,7 @@ body {
 }
 button{
   touch-action: manipulation;    /* prevent double tap zoom */
-  background-color: #007bff;
+  background-color: rgb(224, 146, 0);
   border: none;
   color: white;
   padding: 15px 32px;
