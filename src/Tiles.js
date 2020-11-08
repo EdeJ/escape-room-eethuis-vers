@@ -67,7 +67,7 @@ function Tiles({ tileData, checkAllCorrect }) {
                 setStatus('correct');
                 setTimeout(function () { checkAllCorrect(true); }, 3000);
             } else {
-                setButtonText('fout');
+                setButtonText('Antwoord onjuist!');
                 setStatus('wrong');
                 checkAllCorrect(false);
             }
