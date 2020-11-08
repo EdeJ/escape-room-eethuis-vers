@@ -20,12 +20,12 @@ function DragGame({ setFinished }) {
         }
     ];
 
-    const [allCorrect, setAllcorrect] = useState(false);
+    // const [allCorrect, setAllcorrect] = useState(false);
 
-    function checkAllCorrect(allCorrect) {
-        allCorrect ? setAllcorrect(true) : setAllcorrect(false);
-        allCorrect ? setFinished(true) : setFinished(false);
-    }
+    // function checkAllCorrect(allCorrect) {
+    //     allCorrect ? setAllcorrect(true) : setAllcorrect(false);
+    //     allCorrect ? setFinished(true) : setFinished(false);
+    // }
 
     return (
         <>
@@ -35,7 +35,7 @@ function DragGame({ setFinished }) {
             </header>
             <Tiles
                 tileData={tileData}
-                checkAllCorrect={checkAllCorrect}
+                checkAllCorrect={setFinished}
             />
 
         </>
