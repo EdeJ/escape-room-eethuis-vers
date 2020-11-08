@@ -50,17 +50,10 @@ function Tiles({ tileData, checkAllCorrect }) {
 
             }
             if (allCorrect) {
-                console.log('ALLES GOED!!!');
-
-                // $('#check').addClass('correct');
-                // $('#check').removeClass('wrong');
                 setButtonText('Goed');
                 setStatus('correct');
                 setTimeout(function () { checkAllCorrect(true); }, 3000);
-
             } else {
-                // $('#check').addClass('wrong');
-                // $('#check').removeClass('correct');
                 setButtonText('fout');
                 setStatus('wrong');
                 checkAllCorrect(false);
