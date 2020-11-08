@@ -28,6 +28,9 @@ function Tiles({ tileData, checkAllCorrect }) {
         const winningSound = new Howl({
             src: [`${process.env.PUBLIC_URL}/sounds/winning.mp3`]
         });
+        const wrongSound = new Howl({
+            src: [`${process.env.PUBLIC_URL}/sounds/wrong.mp3`]
+        });
 
         const overlapThreshold = "10%";
 
@@ -67,7 +70,8 @@ function Tiles({ tileData, checkAllCorrect }) {
                 setStatus('correct');
                 setTimeout(function () { checkAllCorrect(true); }, 3000);
             } else {
-                setButtonText('Antwoord onjuist!');
+                wrongSound.play();
+                setButtonText('Antwoord onjuist');
                 setStatus('wrong');
                 checkAllCorrect(false);
             }
@@ -110,7 +114,7 @@ function Tiles({ tileData, checkAllCorrect }) {
                 throwProps: true,
                 onDragStart: function (e) {
                     clickSound.play();
-                    element.classList.remove("correct", "wrong");
+                    // element.classList.remove("correct", "wrong");
                 },
 
                 onDrag: function (e) {
