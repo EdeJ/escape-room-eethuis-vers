@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/escape-room-eethuis-vers/static/css/main.1173fcd6.chunk.css",
-    "main.js": "/escape-room-eethuis-vers/static/js/main.96719aa9.chunk.js",
-    "main.js.map": "/escape-room-eethuis-vers/static/js/main.96719aa9.chunk.js.map",
+    "main.css": "/escape-room-eethuis-vers/static/css/main.6e70a6eb.chunk.css",
+    "main.js": "/escape-room-eethuis-vers/static/js/main.e393e948.chunk.js",
+    "main.js.map": "/escape-room-eethuis-vers/static/js/main.e393e948.chunk.js.map",
     "runtime-main.js": "/escape-room-eethuis-vers/static/js/runtime-main.003ea750.js",
     "runtime-main.js.map": "/escape-room-eethuis-vers/static/js/runtime-main.003ea750.js.map",
-    "static/js/2.b22ede56.chunk.js": "/escape-room-eethuis-vers/static/js/2.b22ede56.chunk.js",
-    "static/js/2.b22ede56.chunk.js.map": "/escape-room-eethuis-vers/static/js/2.b22ede56.chunk.js.map",
+    "static/js/2.3d11ea57.chunk.js": "/escape-room-eethuis-vers/static/js/2.3d11ea57.chunk.js",
+    "static/js/2.3d11ea57.chunk.js.map": "/escape-room-eethuis-vers/static/js/2.3d11ea57.chunk.js.map",
     "static/js/3.eebbd4ce.chunk.js": "/escape-room-eethuis-vers/static/js/3.eebbd4ce.chunk.js",
     "static/js/3.eebbd4ce.chunk.js.map": "/escape-room-eethuis-vers/static/js/3.eebbd4ce.chunk.js.map",
     "index.html": "/escape-room-eethuis-vers/index.html",
-    "static/css/main.1173fcd6.chunk.css.map": "/escape-room-eethuis-vers/static/css/main.1173fcd6.chunk.css.map",
-    "static/js/2.b22ede56.chunk.js.LICENSE.txt": "/escape-room-eethuis-vers/static/js/2.b22ede56.chunk.js.LICENSE.txt",
+    "static/css/main.6e70a6eb.chunk.css.map": "/escape-room-eethuis-vers/static/css/main.6e70a6eb.chunk.css.map",
+    "static/js/2.3d11ea57.chunk.js.LICENSE.txt": "/escape-room-eethuis-vers/static/js/2.3d11ea57.chunk.js.LICENSE.txt",
     "static/media/App.css": "/escape-room-eethuis-vers/static/media/1280px-coffee-beans.adb916d4.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.003ea750.js",
-    "static/js/2.b22ede56.chunk.js",
-    "static/css/main.1173fcd6.chunk.css",
-    "static/js/main.96719aa9.chunk.js"
+    "static/js/2.3d11ea57.chunk.js",
+    "static/css/main.6e70a6eb.chunk.css",
+    "static/js/main.e393e948.chunk.js"
   ]
 }
