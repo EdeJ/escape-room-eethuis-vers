@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react'
+import $ from 'jquery';
 import { ArrowsMove } from 'react-bootstrap-icons';
-import 'bootstrap/dist/css/bootstrap.css';
+// import 'bootstrap/dist/css/bootstrap.css';
 import gsap from 'gsap';
 import Draggable from "gsap/Draggable";
-import $ from 'jquery';
-
 import './App.css';
+import ResultButton from './ResultButton';
+
+gsap.registerPlugin(Draggable);
 
 function Tiles({ tileData, checkAllCorrect }) {
 
-    gsap.registerPlugin(Draggable);
+    const [buttenText, setButtonText] = useState('Controleer Antwoord');
 
     const [allTilesDroped, setAllTilesDroped] = useState(false);
-    // const [allCorrect, setAllCorrect] = useState(false);
+    const [status, setStatus] = useState('hidden');
 
     useEffect(() => {
         const overlapThreshold = "10%";
@@ -49,13 +51,18 @@ function Tiles({ tileData, checkAllCorrect }) {
             }
             if (allCorrect) {
                 console.log('ALLES GOED!!!');
-                $('.draggable').addClass('correct');
-                $('.draggable').removeClass('wrong');
+
+                // $('#check').addClass('correct');
+                // $('#check').removeClass('wrong');
+                setButtonText('Goed');
+                setStatus('correct');
                 setTimeout(function () { checkAllCorrect(true); }, 3000);
 
             } else {
-                $('.draggable').addClass('wrong');
-                $('.draggable').removeClass('correct');
+                // $('#check').addClass('wrong');
+                // $('#check').removeClass('correct');
+                setButtonText('fout');
+                setStatus('wrong');
                 checkAllCorrect(false);
             }
         }
@@ -158,7 +165,13 @@ function Tiles({ tileData, checkAllCorrect }) {
                             continue;
                         }
                     }
-                    allDroped ? setAllTilesDroped(true) : setAllTilesDroped(false);
+                    // allDroped ? setAllTilesDroped(true) : setAllTilesDroped(false);
+                    if (allDroped) {
+                        setStatus('')
+                    } else {
+                        setStatus('hidden');
+                        setButtonText('Controleer Antwoord');
+                    }
 
                     return tile;
                 }
@@ -174,7 +187,7 @@ function Tiles({ tileData, checkAllCorrect }) {
                     {tileData.map((tile, i) => (
                         <div key={i} id={tile.order} className="box draggable">{tile.name}<ArrowsMove className='arrow' /></div>
                     ))}
-                    <button id="check" type="button" className={`${allTilesDroped ? 'showBtn' : ''} btn btn-lg btn-primary`}>Controleer Antwoord</button>
+                    <ResultButton buttenText={buttenText} status={status} />
                 </div>
                 <div className="list-box" id="drop-list">
                     {tileData.map((tile, i) => (

@@ -89,7 +89,7 @@ body {
   height: 60px;
   color: white;
   padding: 10px 20px;
-  /* border: 3px solid; */
+  border: 4px solid black;
   border-radius: 20px;
 }
 
@@ -97,6 +97,8 @@ body {
   border-style: none;
   background-color: rgba(255, 255, 255, 0.5);
   border-style: dashed;
+  border-width: 3px;
+  border-color: white;
 }
 
 .hitting {
@@ -107,18 +109,30 @@ body {
   opacity: 0.5;
 }
 
-#content button {
+.hidden {
   display: none;
 }
 
-#content .showBtn {
+/* #content .showBtn {
   display: block;
-}
+} */
 
 .wrong {
-  background-color: red;
+  background-color: #dc3545;
 }
 
 .correct {
-  background-color: green;
+  background-color: #28a745;
+}
+button{
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: .3em;
 }
