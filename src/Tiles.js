@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import $ from 'jquery';
 import { ArrowsMove } from 'react-bootstrap-icons';
 // import 'bootstrap/dist/css/bootstrap.css';
+import { Howl, Howler } from 'howler';
 import gsap from 'gsap';
 import Draggable from "gsap/Draggable";
 import './App.css';
@@ -17,6 +18,17 @@ function Tiles({ tileData, checkAllCorrect }) {
     const [status, setStatus] = useState('hidden');
 
     useEffect(() => {
+
+        const clickSound = new Howl({
+            src: [`${process.env.PUBLIC_URL}/sounds/click.mp3`]
+        });
+        const blopSound = new Howl({
+            src: [`${process.env.PUBLIC_URL}/sounds/blop.mp3`]
+        });
+        const winningSound = new Howl({
+            src: [`${process.env.PUBLIC_URL}/sounds/winning.mp3`]
+        });
+
         const overlapThreshold = "10%";
 
         const targets = $(".target");
@@ -50,6 +62,7 @@ function Tiles({ tileData, checkAllCorrect }) {
 
             }
             if (allCorrect) {
+                winningSound.play();
                 setButtonText('Goed');
                 setStatus('correct');
                 setTimeout(function () { checkAllCorrect(true); }, 3000);
@@ -96,10 +109,12 @@ function Tiles({ tileData, checkAllCorrect }) {
                 type: "x,y",
                 throwProps: true,
                 onDragStart: function (e) {
+                    clickSound.play();
                     element.classList.remove("correct", "wrong");
                 },
 
                 onDrag: function (e) {
+                    // clickSound.play();
                     let parent = tile.parent;
                     if (parent) {
                         if (this.hitTest(parent.element, overlapThreshold)) {
@@ -141,6 +156,7 @@ function Tiles({ tileData, checkAllCorrect }) {
 
                     // move to parent
                     if (tile.parent) {
+                        blopSound.play();
                         const rect1 = element.getBoundingClientRect();
                         const rect2 = tile.parent.element.getBoundingClientRect();
 
