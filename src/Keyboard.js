@@ -1,7 +1,8 @@
 import React from 'react';
 import './keyboard.css';
+import KeyboardButton from './KeyboardButton';
 
-function Keyboard() {
+function Keyboard({ keyPressed }) {
     return (
         <div>
             <div id="keyboard">
@@ -40,45 +41,49 @@ function Keyboard() {
                 </ul> */}
                     <ul className="cf" id="qwerty">
                         {/* <li style={{ opacity: 0 }} ><button className="key c9" id="tab"><span>tab</span></button></li> */}
-                        <li><button className="key c81"><span>q</span></button></li>
-                        <li><button className="key c87"><span>w</span></button></li>
-                        <li><button className="key c69"><span>e</span></button></li>
-                        <li><button className="key c82"><span>r</span></button></li>
-                        <li><button className="key c84"><span>t</span></button></li>
-                        <li><button className="key c89"><span>y</span></button></li>
-                        <li><button className="key c85"><span>u</span></button></li>
-                        <li><button className="key c73"><span>i</span></button></li>
-                        <li><button className="key c79"><span>o</span></button></li>
-                        <li><button className="key c80"><span>p</span></button></li>
+                        <KeyboardButton keyName={'q'} keyPressed={keyPressed} />
+                        <KeyboardButton keyName={'w'} keyPressed={keyPressed} />
+                        <KeyboardButton keyName={'e'} keyPressed={keyPressed} />
+                        <KeyboardButton keyName={'r'} keyPressed={keyPressed} />
+                        <KeyboardButton keyName={'t'} keyPressed={keyPressed} />
+                        <KeyboardButton keyName={'y'} keyPressed={keyPressed} />
+                        <KeyboardButton keyName={'u'} keyPressed={keyPressed} />
+                        <KeyboardButton keyName={'i'} keyPressed={keyPressed} />
+                        <KeyboardButton keyName={'o'} keyPressed={keyPressed} />
+                        <KeyboardButton keyName={'p'} keyPressed={keyPressed} />
                         {/* <li style={{ opacity: 0 }} ><button className="key c219 alt"><b>&#123;</b><span>[</span></button></li> */}
                         {/* <li style={{ opacity: 0 }} ><button className="key c221 alt"><b>&#125;</b><span>]</span></button></li> */}
                         {/* <li style={{ opacity: 0 }} ><button className="key c220 alt"><b>|</b><span>\</span></button></li> */}
-                        <li><button className="key c46" id="delete"><span>Delete</span></button></li>
+                        {/* <li><button className="key c46" id="delete"><span>Delete</span></button></li> */}
+                        <KeyboardButton keyName={'delete'} keyPressed={keyPressed} />
                     </ul>
                     <ul className="cf" id="asdfg">
                         {/* <li style={{ opacity: 0 }} ><button className="key c20 alt" id="caps"><b></b><span>caps lock</span></button></li> */}
-                        <li><button className="key c65"><span>a</span></button></li>
-                        <li><button className="key c83"><span>s</span></button></li>
-                        <li><button className="key c68"><span>d</span></button></li>
-                        <li><button className="key c70"><span>f</span></button></li>
-                        <li><button className="key c71"><span>g</span></button></li>
-                        <li><button className="key c72"><span>h</span></button></li>
-                        <li><button className="key c74"><span>j</span></button></li>
-                        <li><button className="key c75"><span>k</span></button></li>
-                        <li><button className="key c76"><span>l</span></button></li>
+                        <KeyboardButton keyName={'a'} keyPressed={keyPressed} />
+                        <KeyboardButton keyName={'s'} keyPressed={keyPressed} />
+                        <KeyboardButton keyName={'d'} keyPressed={keyPressed} />
+                        <KeyboardButton keyName={'f'} keyPressed={keyPressed} />
+                        <KeyboardButton keyName={'g'} keyPressed={keyPressed} />
+                        <KeyboardButton keyName={'h'} keyPressed={keyPressed} />
+                        <KeyboardButton keyName={'j'} keyPressed={keyPressed} />
+                        <KeyboardButton keyName={'k'} keyPressed={keyPressed} />
+                        <KeyboardButton keyName={'l'} keyPressed={keyPressed} />
+
                         {/* <li style={{ opacity: 0 }} ><button className="key c186 alt"><b>:</b><span>;</span></button></li>
                     <li style={{ opacity: 0 }} ><button className="key c222 alt"><b>"</b><span>'</span></button></li> */}
-                        <li><button className="key c13 alt" id="enter"><span>return</span></button></li>
+                        {/* <li><button className="key c13 alt" id="enter"><span>return</span></button></li> */}
+                        <KeyboardButton keyName={'enter'} keyPressed={keyPressed} />
                     </ul>
                     <ul className="cf" id="zxcvb">
                         {/* <li style={{ opacity: 0 }} ><button className="key c16 shiftleft"><span>Shift</span></button></li> */}
-                        <li><button className="key c90"><span>z</span></button></li>
-                        <li><button className="key c88"><span>x</span></button></li>
-                        <li><button className="key c67"><span>c</span></button></li>
-                        <li><button className="key c86"><span>v</span></button></li>
-                        <li><button className="key c66"><span>b</span></button></li>
-                        <li><button className="key c78"><span>n</span></button></li>
-                        <li><button className="key c77"><span>m</span></button></li>
+                        <KeyboardButton keyName={'z'} keyPressed={keyPressed} />
+                        <KeyboardButton keyName={'x'} keyPressed={keyPressed} />
+                        <KeyboardButton keyName={'c'} keyPressed={keyPressed} />
+                        <KeyboardButton keyName={'v'} keyPressed={keyPressed} />
+                        <KeyboardButton keyName={'b'} keyPressed={keyPressed} />
+                        <KeyboardButton keyName={'n'} keyPressed={keyPressed} />
+                        <KeyboardButton keyName={'m'} keyPressed={keyPressed} />
+
                         {/* <li style={{ opacity: 0 }} ><button className="key c188 alt"><b>&lt;</b><span>,</span></button></li>
                         <li style={{ opacity: 0 }} ><button className="key c190 alt"><b>&gt;</b><span>.</span></button></li>
                         <li style={{ opacity: 0 }} ><button className="key c191 alt"><b>?</b><span>/</span></button></li>
