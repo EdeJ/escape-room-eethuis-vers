@@ -1,6 +1,7 @@
 /* ipdad = 1536 x 2048 pixels, 4:3 ratio */
 @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lora:wght@600&family=Noto+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
 * {
   padding: 0;
@@ -13,7 +14,7 @@ body {
 }
 
 header {
-  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
   background-color: whitesmoke;
   color: black;
   height: 80px;
@@ -125,7 +126,8 @@ body {
   background-color: #28a745;
 }
 button{
-  background-color: #007bff;
+  touch-action: manipulation;    /* prevent double tap zoom */
+  background-color: rgb(224, 146, 0);
   border: none;
   color: white;
   padding: 15px 32px;

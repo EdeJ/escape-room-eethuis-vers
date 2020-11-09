@@ -5,18 +5,18 @@ function DragGame({ setFinished }) {
     const tileData = [
         {
             order: 2,
-            name: '2 Latte'
+            name: 'Latte (3)'
         }, {
             order: 0,
-            name: '0 Espresso macchiato'
+            name: 'Espresso macchiato (1)'
         },
         {
             order: 3,
-            name: '3 Cortado'
+            name: 'Cortado (4)'
         },
         {
             order: 1,
-            name: '1 Cappucino'
+            name: 'Cappucino (2)'
         }
     ];
 
