@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Keyboard from './Keyboard';
 import './type-game.css';
 
-
 function TypeGame() {
 
     const winningWord = 'fiets';
@@ -14,7 +13,7 @@ function TypeGame() {
             case 'delete':
                 setText(text.slice(0, -1));
                 break;
-            case 'enter':
+            case 'Enter':
                 text === winningWord ? setMessage('Goed') : setMessage('Antwoord onjuist');
                 break;
 

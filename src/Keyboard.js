@@ -72,7 +72,7 @@ function Keyboard({ keyPressed }) {
                         {/* <li style={{ opacity: 0 }} ><button className="key c186 alt"><b>:</b><span>;</span></button></li>
                     <li style={{ opacity: 0 }} ><button className="key c222 alt"><b>"</b><span>'</span></button></li> */}
                         {/* <li><button className="key c13 alt" id="enter"><span>return</span></button></li> */}
-                        <KeyboardButton keyName={'enter'} keyPressed={keyPressed} />
+                        <KeyboardButton keyName={'Enter'} keyPressed={keyPressed} />
                     </ul>
                     <ul className="cf" id="zxcvb">
                         {/* <li style={{ opacity: 0 }} ><button className="key c16 shiftleft"><span>Shift</span></button></li> */}
