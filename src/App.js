@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import TypeGame from './TypeGame';
 import DragGame from './DragGame';
 
 function App() {
@@ -9,7 +10,7 @@ function App() {
   }
   document.addEventListener("touchmove", preventBehavior, { passive: false });
 
-  const [showDragGame, setShowDragGame] = useState(false);
+  const [showGame, setShowGame] = useState(0);
   const [dragGameFinished, setDragGameFinished] = useState(false);
 
   function setFinished(isFinished) {
@@ -20,10 +21,14 @@ function App() {
 
   return (
     <div>
-      {showDragGame || (
-        <button onClick={() => setShowDragGame(true)} type="button" className="btn btn-lg btn-primary">play drag game</button>
+      {showGame === 1 || (
+        <button onClick={() => setShowGame(1)} type="button" className="btn btn-lg btn-primary">play drag game</button>
       )}
-      {(!dragGameFinished && showDragGame) && <DragGame setFinished={setFinished} />}
+      {showGame === 2 || (
+        <button onClick={() => setShowGame(2)} type="button" className="btn btn-lg btn-primary">play type game</button>
+      )}
+      {showGame === 1 && <DragGame setFinished={setFinished} />}
+      {showGame === 2 && <TypeGame setFinished={setFinished} />}
       {dragGameFinished && <h1 style={{ color: 'white' }} >drag game finished!</h1>}
     </div>
   )
