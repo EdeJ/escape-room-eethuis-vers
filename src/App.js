@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import TypeGame from './TypeGame';
 import DragGame from './DragGame';
+import Sounds from './SamplePlayer';
 
 function App() {
+
+  const sounds = new Sounds();
 
   // prevent scrolling
   function preventBehavior(e) {
@@ -13,6 +16,7 @@ function App() {
   const [showGame, setShowGame] = useState(0);
   const [dragGameFinished, setDragGameFinished] = useState(false);
 
+
   function setFinished(isFinished) {
     if (isFinished) {
       setDragGameFinished(true);
@@ -22,10 +26,18 @@ function App() {
   return (
     <div>
       {showGame === 1 || (
-        <button onClick={() => setShowGame(1)} type="button" className="btn btn-lg btn-primary">play drag game</button>
+        <button onClick={() => {
+          setShowGame(1);
+          sounds.play('click');
+        }
+        } type="button" className="btn btn-lg btn-primary">play drag game</button>
       )}
       {showGame === 2 || (
-        <button onClick={() => setShowGame(2)} type="button" className="btn btn-lg btn-primary">play type game</button>
+        <button onClick={() => {
+          setShowGame(2);
+          sounds.play('click');
+        }
+        } type="button" className="btn btn-lg btn-primary">play type game</button>
       )}
       {showGame === 1 && <DragGame setFinished={setFinished} />}
       {showGame === 2 && <TypeGame setFinished={setFinished} />}

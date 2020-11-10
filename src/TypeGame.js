@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Keyboard from './Keyboard';
+import Sounds from './SamplePlayer';
 import './type-game.css';
 
 function TypeGame() {
@@ -7,6 +8,7 @@ function TypeGame() {
     const winningWord = 'fiets';
     const [text, setText] = useState('');
     const [message, setMessage] = useState('');
+    const sounds = new Sounds();
 
     function keyPressed(key) {
         switch (key) {
@@ -14,12 +16,21 @@ function TypeGame() {
                 setText(text.slice(0, -1));
                 break;
             case 'Enter':
-                text === winningWord ? setMessage('Goed') : setMessage('Antwoord onjuist');
+                if (text === winningWord) {
+                    setMessage('Goed');
+                    sounds.play('correct');
+                } else {
+                    setMessage('Antwoord onjuist');
+                    sounds.play('wrong');
+                }
                 break;
 
             default:
                 setText(text + key);
-                text + key === winningWord && setMessage('Goed');
+                if (text + key === winningWord) {
+                    setMessage('Goed');
+                    sounds.play('correct');
+                }
                 break;
         }
     }

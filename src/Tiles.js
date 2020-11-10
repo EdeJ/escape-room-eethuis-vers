@@ -7,8 +7,12 @@ import gsap from 'gsap';
 import Draggable from "gsap/Draggable";
 import './App.css';
 import ResultButton from './ResultButton';
+import Sounds from './SamplePlayer';
+
 
 gsap.registerPlugin(Draggable);
+const sounds = new Sounds();
+
 
 function Tiles({ tileData, checkAllCorrect }) {
 
@@ -20,18 +24,24 @@ function Tiles({ tileData, checkAllCorrect }) {
     useEffect(() => {
 
         //TODO make AUDIO SPRITES
-        const clickSound = new Howl({
-            src: [`${process.env.PUBLIC_URL}/sounds/click.mp3`]
-        });
-        const blopSound = new Howl({
-            src: [`${process.env.PUBLIC_URL}/sounds/blop.mp3`]
-        });
-        const winningSound = new Howl({
-            src: [`${process.env.PUBLIC_URL}/sounds/winning.mp3`]
-        });
-        const wrongSound = new Howl({
-            src: [`${process.env.PUBLIC_URL}/sounds/wrong.mp3`]
-        });
+        // const clickSound = new Howl({
+        //     src: [`${process.env.PUBLIC_URL}/sounds/click.mp3`]
+        // });
+        // const blopSound = new Howl({
+        //     src: [`${process.env.PUBLIC_URL}/sounds/blop.mp3`]
+        // });
+        // const winningSound = new Howl({
+        //     src: [`${process.env.PUBLIC_URL}/sounds/winning.mp3`]
+        // });
+        // const wrongSound = new Howl({
+        //     src: [`${process.env.PUBLIC_URL}/sounds/wrong.mp3`]
+        // });
+
+
+
+
+
+
 
         const overlapThreshold = "10%";
 
@@ -66,12 +76,12 @@ function Tiles({ tileData, checkAllCorrect }) {
 
             }
             if (allCorrect) {
-                winningSound.play();
+                sounds.play('correct');
                 setButtonText('Goed');
                 setStatus('correct');
                 setTimeout(function () { checkAllCorrect(true); }, 3000);
             } else {
-                wrongSound.play();
+                sounds.play('wrong');
                 setButtonText('Antwoord onjuist');
                 setStatus('wrong');
                 checkAllCorrect(false);
@@ -113,11 +123,9 @@ function Tiles({ tileData, checkAllCorrect }) {
                 // edgeResistance: 0.65,
                 type: "x,y",
                 throwProps: true,
-                onDragStart: function (e) {
-                    clickSound.play();
-                    // element.classList.remove("correct", "wrong");
+                onPress: () => {
+                    sounds.play('click');
                 },
-
                 onDrag: function (e) {
                     // clickSound.play();
                     let parent = tile.parent;
@@ -161,7 +169,7 @@ function Tiles({ tileData, checkAllCorrect }) {
 
                     // move to parent
                     if (tile.parent) {
-                        blopSound.play();
+                        sounds.play('blop');
                         const rect1 = element.getBoundingClientRect();
                         const rect2 = tile.parent.element.getBoundingClientRect();
 
