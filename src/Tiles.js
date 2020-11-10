@@ -23,26 +23,6 @@ function Tiles({ tileData, checkAllCorrect }) {
 
     useEffect(() => {
 
-        //TODO make AUDIO SPRITES
-        // const clickSound = new Howl({
-        //     src: [`${process.env.PUBLIC_URL}/sounds/click.mp3`]
-        // });
-        // const blopSound = new Howl({
-        //     src: [`${process.env.PUBLIC_URL}/sounds/blop.mp3`]
-        // });
-        // const winningSound = new Howl({
-        //     src: [`${process.env.PUBLIC_URL}/sounds/winning.mp3`]
-        // });
-        // const wrongSound = new Howl({
-        //     src: [`${process.env.PUBLIC_URL}/sounds/wrong.mp3`]
-        // });
-
-
-
-
-
-
-
         const overlapThreshold = "10%";
 
         const targets = $(".target");
@@ -178,7 +158,7 @@ function Tiles({ tileData, checkAllCorrect }) {
                     }
                     gsap.to(element, { duration: 0.2, x: x, y: y });
 
-                    // Als alle tile gelegd zijn
+                    // Als alle tiles gelegd zijn
                     let allDroped = true;
                     for (let i = 0; i < dropTiles.length; i++) {
                         const tile = dropTiles[i];
