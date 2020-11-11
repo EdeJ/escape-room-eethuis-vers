@@ -1,9 +1,19 @@
-import { Player } from 'tone';
+import { Player, Buffer } from 'tone';
 
-const player1 = new Player(`${process.env.PUBLIC_URL}/sounds/sounds.mp3`).toDestination();
-const player2 = new Player(`${process.env.PUBLIC_URL}/sounds/sounds.mp3`).toDestination();
-const player3 = new Player(`${process.env.PUBLIC_URL}/sounds/sounds.mp3`).toDestination();
-const player4 = new Player(`${process.env.PUBLIC_URL}/sounds/sounds.mp3`).toDestination();
+let player1;
+let player2;
+let player3;
+let player4;
+
+
+const buffer = new Buffer(`${process.env.PUBLIC_URL}/sounds/sounds.mp3`, function () {
+    const buff = buffer.get();
+    player1 = new Player(buff).toDestination();
+    player2 = new Player(buff).toDestination();
+    player3 = new Player(buff).toDestination();
+    player4 = new Player(buff).toDestination();
+});
+
 
 const Sounds = function () {
     Sounds.prototype.play = (sample) => {

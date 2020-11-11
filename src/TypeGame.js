@@ -14,24 +14,26 @@ function TypeGame() {
         switch (key) {
             case 'delete':
                 setText(text.slice(0, -1));
+                checkAnswer(text.slice(0, -1));
                 break;
             case 'Enter':
-                if (text === winningWord) {
-                    setMessage('Goed');
-                    sounds.play('correct');
-                } else {
-                    setMessage('Antwoord onjuist');
-                    sounds.play('wrong');
-                }
+                checkAnswer(text, true);
                 break;
 
             default:
                 setText(text + key);
-                if (text + key === winningWord) {
-                    setMessage('Goed');
-                    sounds.play('correct');
-                }
+                checkAnswer(text + key);
                 break;
+        }
+    }
+
+    function checkAnswer(word, evaluateWrong) {
+        if (word === winningWord) {
+            setMessage('Goed');
+            sounds.play('correct');
+        } else if (evaluateWrong) {
+            setMessage('Antwoord onjuist');
+            sounds.play('wrong');
         }
     }
 
