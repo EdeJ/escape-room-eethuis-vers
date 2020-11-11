@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import $ from 'jquery';
 import { ArrowsMove } from 'react-bootstrap-icons';
 // import 'bootstrap/dist/css/bootstrap.css';
-import { Howl, Howler } from 'howler';
 import gsap from 'gsap';
 import Draggable from "gsap/Draggable";
 import './App.css';
@@ -34,8 +33,6 @@ function Tiles({ tileData, checkAllCorrect }) {
         const dragTiles = Array.prototype.map.call(dragElements, createDragTile);
         const dropTiles = Array.prototype.map.call(dropElements, createDropTile);
 
-        console.log(dropTiles);
-
         const checkButton = document.getElementById('check');
         checkButton.addEventListener("click", checkTiles);
 
@@ -50,7 +47,6 @@ function Tiles({ tileData, checkAllCorrect }) {
                     continue;
                 }
                 if (tile.element.id !== tile.child.element.id) {
-                    console.log('false');
                     allCorrect = false;
                 }
 
