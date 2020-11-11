@@ -1,8 +1,9 @@
 #text-field {
     font-size: 2em;
     padding: 40px;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.8);
     color: white;
+    height: 296px;
 }
 
 h1 {

@@ -24,7 +24,7 @@ function App() {
   }
 
   return (
-    <div>
+    <div id="home">
       {showGame !== 0 || (
         <button onClick={() => {
           setShowGame(1);

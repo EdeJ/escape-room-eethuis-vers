@@ -52,17 +52,17 @@ function TypeGame({ setShowGame }) {
     }
 
     return (
-        <div>
+        <div id="type-game">
             <Header
                 setShowGame={setShowGame}
                 headerText={'Hoe heet de duurste koffie ter wereld?'}
             />
-            <div className="content">
+
+            <div id="text-field">
+                {text}
                 <div className="center">
                     <ResultButton buttenText={buttenText} status={status} />
                 </div>
-                {/* <div id="message">{message}</div> */}
-                <div id="text-field">{text}</div>
             </div>
             <Keyboard keyPressed={keyPressed} />
         </div>

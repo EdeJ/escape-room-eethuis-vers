@@ -134,7 +134,7 @@ body {
 button {
   touch-action: manipulation;
   /* prevent double tap zoom */
-  background-color: rgb(255, 123, 0);
+  background-color: orange;
   border: none;
   color: white;
   padding: 15px 32px;
@@ -157,6 +157,7 @@ button {
 .center {
   display: flex;
   justify-content: center;
+  margin-top: 60px;
 }
 .backBtn {
   color: white;
