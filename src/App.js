@@ -25,23 +25,23 @@ function App() {
 
   return (
     <div>
-      {showGame === 1 || (
+      {showGame !== 0 || (
         <button onClick={() => {
           setShowGame(1);
           sounds.play('click');
         }
         } type="button" className="btn btn-lg btn-primary">play drag game</button>
       )}
-      {showGame === 2 || (
+      {showGame !== 0 || (
         <button onClick={() => {
           setShowGame(2);
           sounds.play('click');
         }
         } type="button" className="btn btn-lg btn-primary">play type game</button>
       )}
-      {showGame === 1 && <DragGame setFinished={setFinished} />}
-      {showGame === 2 && <TypeGame setFinished={setFinished} />}
-      {dragGameFinished && <h1 style={{ color: 'white' }} >drag game finished!</h1>}
+      {showGame === 1 && <DragGame setFinished={setFinished} setShowGame={setShowGame} />}
+      {showGame === 2 && <TypeGame setFinished={setFinished} setShowGame={setShowGame} />}
+      {/* {dragGameFinished && <h1 style={{ color: 'white' }} >drag game finished!</h1>} */}
     </div>
   )
 }

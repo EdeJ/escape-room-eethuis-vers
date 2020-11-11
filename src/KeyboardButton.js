@@ -9,14 +9,14 @@ function KeyboardButton({ keyName, keyPressed }) {
         <li key={keyName}>
             <button
                 value={keyName}
-                className="key"
+                className={`key ${keyName}`}
                 onClick={(e) => {
                     keyPressed(e.currentTarget.value);
                     sounds.play('click');
                 }
                 }
             >
-                <span>{keyName}</span>
+                <span>{keyName === 'spacebar' || keyName}</span>
             </button>
         </li>
     )
