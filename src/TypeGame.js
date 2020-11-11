@@ -20,6 +20,7 @@ function TypeGame({ setShowGame }) {
     function keyPressed(key) {
         switch (key) {
             case 'delete':
+                setStatus('hidden');
                 setText(text.slice(0, -1));
                 checkAnswer(text.slice(0, -1));
                 break;
