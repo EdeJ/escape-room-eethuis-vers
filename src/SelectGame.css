@@ -1,0 +1,15 @@
+#countries {
+display: flex;
+flex-wrap: wrap;
+justify-content: space-evenly;
+}
+#countries .box { 
+    margin: 40px;
+}
+#game-content {
+    height: calc(100% - 140px); 
+    height: -o-calc(100% - 140px); /* opera */
+    height: -webkit-calc(100% - 140px); /* google, safari */
+    height: -moz-calc(100% - 140px); /* firefox */
+
+}
