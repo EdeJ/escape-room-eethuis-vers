@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import $ from 'jquery';
-import { ArrowsMove } from 'react-bootstrap-icons';
+import { ArrowsMove, Check } from 'react-bootstrap-icons';
 // import 'bootstrap/dist/css/bootstrap.css';
 import gsap from 'gsap';
 import Draggable from "gsap/Draggable";
@@ -165,7 +165,8 @@ function Tiles({ tileData, checkAllCorrect }) {
                     }
                     // allDroped ? setAllTilesDroped(true) : setAllTilesDroped(false);
                     if (allDroped) {
-                        setStatus('')
+                        setStatus('');
+                        checkTiles();
                     } else {
                         setStatus('hidden');
                         setButtonText('Controleer Antwoord');

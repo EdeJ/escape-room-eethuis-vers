@@ -89,13 +89,13 @@ function Keyboard({ keyPressed }) {
                         <li style={{ opacity: 0 }} ><button className="key c191 alt"><b>?</b><span>/</span></button></li>
                         <li style={{ opacity: 0 }} ><button className="key c16 shiftright"><span>Shift</span></button></li> */}
                     </ul>
-                    {/* <ul className="cf" id="bottomrow">
-                    <li><button className="key" id="fn"><span>fn</span></button></li>
+                    <ul className="cf" id="bottomrow">
+                        {/* <li><button className="key" id="fn"><span>fn</span></button></li>
                     <li><button className="key c17" id="control"><span>control</span></button></li>
                     <li><button className="key option" id="optionleft"><span>option</span></button></li>
-                    <li><button className="key command" id="commandleft"><span>command</span></button></li>
-                    <li><button className="key c32" id="spacebar"></button></li>
-                    <li><button className="key command" id="commandright"><span>command</span></button></li>
+                    <li><button className="key command" id="commandleft"><span>command</span></button></li> */}
+                        <KeyboardButton id="spacebar" keyName={'spacebar'} keyPressed={keyPressed} />
+                        {/* <li><button className="key command" id="commandright"><span>command</span></button></li>
                     <li><button className="key option" id="optionright"><span>option</span></button></li>
                     <ol className="cf">
                         <li><button className="key c37" id="left"><span>&#9666;</span></button></li>
@@ -104,8 +104,8 @@ function Keyboard({ keyPressed }) {
                             <button className="key c40" id="down"><span>&#9662;</span></button>
                         </li>
                         <li><button className="key c39" id="right"><span>&#9656;</span></button></li>
-                    </ol>
-                </ul> */}
+                    </ol> */}
+                    </ul>
                 </div>
             </div>
         </div>

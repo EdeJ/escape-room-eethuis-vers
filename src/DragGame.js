@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
+import { ArrowLeftShort } from 'react-bootstrap-icons';
+import Header from './Header';
 import Tiles from './Tiles';
 
-function DragGame({ setFinished }) {
+function DragGame({ setFinished, setShowGame }) {
     const tileData = [
         {
             order: 2,
@@ -20,19 +22,12 @@ function DragGame({ setFinished }) {
         }
     ];
 
-    // const [allCorrect, setAllcorrect] = useState(false);
-
-    // function checkAllCorrect(allCorrect) {
-    //     allCorrect ? setAllcorrect(true) : setAllcorrect(false);
-    //     allCorrect ? setFinished(true) : setFinished(false);
-    // }
-
     return (
         <>
-            <header>
-                {/* <div>all Correct: {allCorrect ? 'YES' : 'NO'}</div> */}
-                <h4>1. Zet de volgende koffiesoorten in de volgorde van hoeveelheid melk (versie 8-11)</h4>
-            </header>
+            <Header
+                setShowGame={setShowGame}
+                headerText={'1. Zet de volgende koffiesoorten in de volgorde van hoeveelheid melk (versie 8-11)'}
+            />
             <Tiles
                 tileData={tileData}
                 checkAllCorrect={setFinished}

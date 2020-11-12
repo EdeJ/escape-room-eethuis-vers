@@ -1,5 +1,3 @@
-/* body {background: #333;} */
-
 #keyboard {
     position: absolute;
     bottom: 0;
@@ -23,7 +21,7 @@ li {
 
 
 .key {
-    padding: 15px 28px;
+    /* padding: 15px 28px; */
     display: block;
     color: #aaa;
     /* font: bold 9pt arial; */
@@ -85,26 +83,12 @@ li {
     text-transform: lowercase;
 }
 
-
-#numbers li button span {
-    display: block;
+#keyboard button {
+    padding: 0;
 }
-
-#numbers li button b {
-    margin: 3px 0 3px;
+li button span {
     display: block;
-}
-
-#numbers li .alt b {
-    display: block;
-    margin: 0 0 3px;
-}
-
-#numbers li #delete span {
-    text-align: right;
-    margin: 23px 10px 0 0;
-    font-size: 7.5pt;
-    text-transform: lowercase;
+    padding: 15px 32px;
 }
 
 #qwerty li button span {
@@ -278,7 +262,7 @@ li {
 }
 
 #spacebar {
-    width: 226px;
+    width: 370px;
 }
 
 #left img,
@@ -401,11 +385,6 @@ ol {
 
 .cf:after {
     clear: both;
-}
-
-/* For IE 6/7 (trigger hasLayout) */
-.cf {
-    zoom: 1;
 }
 
 .inner-board {
