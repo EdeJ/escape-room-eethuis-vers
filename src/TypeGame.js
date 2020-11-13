@@ -5,7 +5,7 @@ import ResultButton from './ResultButton';
 import Sounds from './SamplePlayer';
 import './type-game.css';
 
-function TypeGame({ setShowGame }) {
+function TypeGame({ setShowGame, setFinished }) {
 
     const winningWord = 'kopiluwak';
     const [text, setText] = useState('');
@@ -44,6 +44,7 @@ function TypeGame({ setShowGame }) {
             setStatus('correct');
             setButtonText('Goed');
             sounds.play('correct');
+            setFinished('typeGame');
         } else if (evaluateWrong) {
             setStatus('wrong');
             setButtonText('Antwoord onjuist');

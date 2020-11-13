@@ -13,7 +13,7 @@ gsap.registerPlugin(Draggable);
 const sounds = new Sounds();
 
 
-function Tiles({ tileData, checkAllCorrect }) {
+function Tiles({ tileData, setFinished }) {
 
     const [buttenText, setButtonText] = useState('Controleer Antwoord');
 
@@ -55,12 +55,13 @@ function Tiles({ tileData, checkAllCorrect }) {
                 sounds.play('correct');
                 setButtonText('Goed');
                 setStatus('correct');
-                setTimeout(function () { checkAllCorrect(true); }, 3000);
+                setFinished('dragGame');
+                //  setTimeout(function () { checkAllCorrect(true); }, 3000);
             } else {
                 sounds.play('wrong');
                 setButtonText('Antwoord onjuist');
                 setStatus('wrong');
-                checkAllCorrect(false);
+                //   checkAllCorrect(false);
             }
         }
 

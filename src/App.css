@@ -175,3 +175,9 @@ button.spacebar{
   height: 53px;
   width: 400px;
 }
+#home {
+  height: 100%;
+}
+.finished{
+  background-color: green;
+}

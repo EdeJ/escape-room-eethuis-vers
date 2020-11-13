@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
-import { ArrowLeftShort } from 'react-bootstrap-icons';
+import React from 'react'
 import Header from './Header';
 import Tiles from './Tiles';
 
-function DragGame({ setFinished, setShowGame }) {
+function DragGame({ setShowGame, setFinished }) {
     const tileData = [
         {
             order: 2,
@@ -30,7 +29,7 @@ function DragGame({ setFinished, setShowGame }) {
             />
             <Tiles
                 tileData={tileData}
-                checkAllCorrect={setFinished}
+                setFinished={setFinished}
             />
 
         </>
