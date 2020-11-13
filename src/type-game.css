@@ -6,7 +6,7 @@
     height: 296px;
 }
 
-#text-field span::after {
+#text-field .text-input::after  {
     content: '|';
     animation: blinker 1.5s linear infinite;
   }

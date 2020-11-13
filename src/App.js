@@ -27,7 +27,7 @@ function App() {
 
   function setFinished(game) {
     setFinishedGames({ ...finishedGames, [`${game}`]: true });
-    setTimeout(() => setShowGame(0), 2000);
+    setTimeout(() => setShowGame(0), 2500);
   }
 
   return (

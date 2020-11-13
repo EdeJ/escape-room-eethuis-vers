@@ -61,7 +61,7 @@ function TypeGame({ setShowGame, setFinished }) {
             />
 
             <div id="text-field">
-                <span>{text}</span>
+                <span className="text-input">{text}</span>
                 <div className="center">
                     <ResultButton buttenText={buttenText} status={status} />
                 </div>
