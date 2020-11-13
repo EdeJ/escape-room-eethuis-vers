@@ -18,6 +18,7 @@ function App() {
   const [dragGameFinished, setDragGameFinished] = useState(false);
 
 
+
   function setFinished(isFinished) {
     if (isFinished) {
       setDragGameFinished(true);
