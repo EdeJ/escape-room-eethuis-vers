@@ -5,7 +5,7 @@ import ResultButton from './ResultButton';
 import Sounds from './SamplePlayer';
 import './SelectGame.css';
 
-function SelectGame({ setShowGame }) {
+function SelectGame({ setShowGame, setFinished }) {
 
     const [countries, setCountries] = useState([
         { name: 'Brazil', checked: false },
@@ -88,6 +88,7 @@ function SelectGame({ setShowGame }) {
                                         sounds.play('correct');
                                         setStatus('correct');
                                         setButtonText('Goed');
+                                        setFinished('selectGame');
                                     } else {
                                         sounds.play('wrong');
                                         setStatus('wrong');
