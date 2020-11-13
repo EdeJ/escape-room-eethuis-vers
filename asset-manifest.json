@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/escape-room-eethuis-vers/static/css/main.21b5add6.chunk.css",
-    "main.js": "/escape-room-eethuis-vers/static/js/main.9862e6be.chunk.js",
-    "main.js.map": "/escape-room-eethuis-vers/static/js/main.9862e6be.chunk.js.map",
-    "runtime-main.js": "/escape-room-eethuis-vers/static/js/runtime-main.8c99a0ad.js",
-    "runtime-main.js.map": "/escape-room-eethuis-vers/static/js/runtime-main.8c99a0ad.js.map",
-    "static/js/2.1151f6ce.chunk.js": "/escape-room-eethuis-vers/static/js/2.1151f6ce.chunk.js",
-    "static/js/2.1151f6ce.chunk.js.map": "/escape-room-eethuis-vers/static/js/2.1151f6ce.chunk.js.map",
-    "static/js/3.351ed714.chunk.js": "/escape-room-eethuis-vers/static/js/3.351ed714.chunk.js",
-    "static/js/3.351ed714.chunk.js.map": "/escape-room-eethuis-vers/static/js/3.351ed714.chunk.js.map",
+    "main.css": "/escape-room-eethuis-vers/static/css/main.76f15a6c.chunk.css",
+    "main.js": "/escape-room-eethuis-vers/static/js/main.0ce31164.chunk.js",
+    "main.js.map": "/escape-room-eethuis-vers/static/js/main.0ce31164.chunk.js.map",
+    "runtime-main.js": "/escape-room-eethuis-vers/static/js/runtime-main.dc8913b1.js",
+    "runtime-main.js.map": "/escape-room-eethuis-vers/static/js/runtime-main.dc8913b1.js.map",
+    "static/js/2.46812b45.chunk.js": "/escape-room-eethuis-vers/static/js/2.46812b45.chunk.js",
+    "static/js/2.46812b45.chunk.js.map": "/escape-room-eethuis-vers/static/js/2.46812b45.chunk.js.map",
+    "static/js/3.0fb58434.chunk.js": "/escape-room-eethuis-vers/static/js/3.0fb58434.chunk.js",
+    "static/js/3.0fb58434.chunk.js.map": "/escape-room-eethuis-vers/static/js/3.0fb58434.chunk.js.map",
     "index.html": "/escape-room-eethuis-vers/index.html",
-    "static/css/main.21b5add6.chunk.css.map": "/escape-room-eethuis-vers/static/css/main.21b5add6.chunk.css.map",
-    "static/js/2.1151f6ce.chunk.js.LICENSE.txt": "/escape-room-eethuis-vers/static/js/2.1151f6ce.chunk.js.LICENSE.txt",
+    "static/css/main.76f15a6c.chunk.css.map": "/escape-room-eethuis-vers/static/css/main.76f15a6c.chunk.css.map",
+    "static/js/2.46812b45.chunk.js.LICENSE.txt": "/escape-room-eethuis-vers/static/js/2.46812b45.chunk.js.LICENSE.txt",
     "static/media/App.css": "/escape-room-eethuis-vers/static/media/1280px-coffee-beans.adb916d4.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.8c99a0ad.js",
-    "static/js/2.1151f6ce.chunk.js",
-    "static/css/main.21b5add6.chunk.css",
-    "static/js/main.9862e6be.chunk.js"
+    "static/js/runtime-main.dc8913b1.js",
+    "static/js/2.46812b45.chunk.js",
+    "static/css/main.76f15a6c.chunk.css",
+    "static/js/main.0ce31164.chunk.js"
   ]
 }
