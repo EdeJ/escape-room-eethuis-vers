@@ -31,7 +31,7 @@ function App() {
   }
 
   return (
-    <div id="home" class="app">
+    <div id="home" class="app">VERSION 13-11
       {/* <Header
         setShowGame={setShowGame}
         headerText={'Escape Room - Eethuis Vers (versie13-11)'}
