@@ -25,7 +25,7 @@ function DragGame({ setShowGame, setFinished }) {
         <>
             <Header
                 setShowGame={setShowGame}
-                headerText={'1. Zet de volgende koffiesoorten in de volgorde van hoeveelheid melk (versie 8-11)'}
+                headerText={'Zet de volgende koffiesoorten in de volgorde van hoeveelheid melk'}
             />
             <Tiles
                 tileData={tileData}

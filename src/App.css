@@ -178,6 +178,11 @@ button.spacebar{
 #home {
   height: 100%;
 }
+button.app {
+  margin: 40px;
+  padding: 20px;
+  font-size: 22px;
+}
 .finished{
   background-color: green;
 }

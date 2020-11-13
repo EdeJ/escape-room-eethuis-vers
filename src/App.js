@@ -3,6 +3,7 @@ import TypeGame from './TypeGame';
 import DragGame from './DragGame';
 import Sounds from './SamplePlayer';
 import SelectGame from './SelectGame';
+import Header from './Header';
 
 function App() {
 
@@ -30,14 +31,19 @@ function App() {
   }
 
   return (
-    <div id="home">
+    <div id="home" class="app">
+      {/* <Header
+        setShowGame={setShowGame}
+        headerText={'Escape Room - Eethuis Vers (versie13-11)'}
+      /> */}
+
       {showGame !== 0 || (
         <button onClick={() => {
           setShowGame(1);
           sounds.play('click');
         }
         } type="button"
-          className={'btn btn-lg btn-primary ' + (finishedGames.dragGame ? 'finished' : '')}
+          className={'btn btn-lg btn-primary app ' + (finishedGames.dragGame ? 'finished' : '')}
         >play drag game</button>
       )}
       {showGame !== 0 || (
@@ -46,7 +52,7 @@ function App() {
           sounds.play('click');
         }
         } type="button"
-          className={'btn btn-lg btn-primary ' + (finishedGames.typeGame ? 'finished' : '')}
+          className={'btn btn-lg btn-primary app ' + (finishedGames.typeGame ? 'finished' : '')}
         >play type game</button>
       )}
       {showGame !== 0 || (
@@ -55,7 +61,7 @@ function App() {
           sounds.play('click');
         }
         } type="button"
-          className={'btn btn-lg btn-primary ' + (finishedGames.selectGame ? 'finished' : '')}
+          className={'btn btn-lg btn-primary app ' + (finishedGames.selectGame ? 'finished' : '')}
         >play select game</button>
       )}
       {showGame === 1 && <DragGame setFinished={setFinished} setShowGame={setShowGame} />}

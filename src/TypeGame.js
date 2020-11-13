@@ -9,7 +9,7 @@ function TypeGame({ setShowGame, setFinished }) {
 
     const winningWord = 'kopiluwak';
     const [text, setText] = useState('');
-    const [message, setMessage] = useState('');
+    // const [message, setMessage] = useState('');
     const sounds = new Sounds();
 
     const [buttenText, setButtonText] = useState('Controleer Antwoord');
