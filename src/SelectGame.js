@@ -99,7 +99,7 @@ function SelectGame({ setShowGame, setFinished }) {
                                 }
                             }}
                         >{country.name}
-                            {country.checked ? <CheckSquare /> : <Square />}
+                            {country.checked ? <CheckSquare size={40} /> : <Square size={40} />}
 
                         </div>
                     ))}

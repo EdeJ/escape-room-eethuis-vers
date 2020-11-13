@@ -4,7 +4,7 @@ flex-wrap: wrap;
 justify-content: space-evenly;
 }
 #countries .box { 
-    margin: 40px;
+    margin: 20px;
 }
 #game-content {
     height: calc(100% - 140px); 
