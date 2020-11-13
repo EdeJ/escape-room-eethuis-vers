@@ -31,7 +31,7 @@ function App() {
   }
 
   return (
-    <div id="home" class="app">VERSION 13-11
+    <div id="home" class="app">
       {/* <Header
         setShowGame={setShowGame}
         headerText={'Escape Room - Eethuis Vers (versie13-11)'}
@@ -68,7 +68,8 @@ function App() {
       {showGame === 2 && <TypeGame setFinished={setFinished} setShowGame={setShowGame} />}
       {showGame === 3 && <SelectGame setFinished={setFinished} setShowGame={setShowGame} />}
       {/* {dragGameFinished && <h1 style={{ color: 'white' }} >drag game finished!</h1>} */}
-    </div>
+      <span style={{ position: 'absolute', bottom: '20px', fontWeight: 'bold', color: 'white' }}>VERSION 13-11</span>
+    </div >
   )
 }
 
