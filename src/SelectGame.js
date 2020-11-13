@@ -55,12 +55,12 @@ function SelectGame({ setShowGame, setFinished }) {
         <div id="select-game">
             <Header
                 setShowGame={setShowGame}
-                headerText={'Welke van de volgende landen produceren koffie?'}
+                headerText={'Welke 4 landen produceren koffie?'}
             />
             <div id="game-content">
                 {text}
                 <div className="center">
-                    <ResultButton buttenText={buttenText} status={status} />
+                    <ResultButton className="result-button" buttenText={buttenText} status={status} />
                 </div>
                 <div id="countries">
                     {countries.map((country, i) => (

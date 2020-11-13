@@ -13,3 +13,10 @@ justify-content: space-evenly;
     height: -moz-calc(100% - 140px); /* firefox */
 
 }
+#select-game #check, #type-game #check {
+    position: absolute;
+    top:0;
+    right: 0;
+    height: 80px;
+    border-radius: 0;
+}
