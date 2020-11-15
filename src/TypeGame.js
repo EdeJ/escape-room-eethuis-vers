@@ -38,8 +38,9 @@ function TypeGame({ setShowGame, setFinished }) {
     }
 
     function checkAnswer(word, evaluateWrong) {
-        console.log(word.replace(' ', ''));
-        if (word.replace(' ', '') === winningWord) {
+        word = word.replace(/\s/g, '');
+
+        if (word === winningWord) {
             // setMessage('Goed');
             setStatus('correct');
             setButtonText('Goed');
