@@ -1,0 +1,22 @@
+#countries {
+display: flex;
+flex-wrap: wrap;
+justify-content: space-evenly;
+}
+#countries .box { 
+    margin: 20px;
+}
+#game-content {
+    height: calc(100% - 140px); 
+    height: -o-calc(100% - 140px); /* opera */
+    height: -webkit-calc(100% - 140px); /* google, safari */
+    height: -moz-calc(100% - 140px); /* firefox */
+
+}
+#select-game #check, #type-game #check {
+    position: absolute;
+    top:0;
+    right: 0;
+    height: 80px;
+    border-radius: 0;
+}

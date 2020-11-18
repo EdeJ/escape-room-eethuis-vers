@@ -1,0 +1,34 @@
+#text-field {
+    font-size: 2em;
+    padding: 40px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    height: 296px;
+}
+
+#text-field .text-input::after  {
+    content: '|';
+    animation: blinker 1.5s linear infinite;
+  }
+  
+  @keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }
+
+h1 {
+    color: white;
+    padding: 10px;
+    background-color: black;
+}
+
+#message {
+    padding: 0;
+    margin: 0;
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+    padding: 10px;
+    background-color: black;
+}
