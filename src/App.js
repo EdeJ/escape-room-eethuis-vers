@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import TypeGame from './TypeGame';
 import DragGame from './DragGame';
 import Sounds from './SamplePlayer';
@@ -16,18 +16,23 @@ function App() {
   document.addEventListener("touchmove", preventBehavior, { passive: false });
 
   const [showGame, setShowGame] = useState(0);
-  // const [dragGameFinished, setDragGameFinished] = useState(false);
+  const [timer, setTimer] = useState();
   const [finishedGames, setFinishedGames] = useState({
     dragGame: false,
     typeGame: false,
     selectGame: false
   });
 
+  useEffect(() => {
+    if (showGame === 0) {
+      clearTimeout(timer);
+    }
+  }, [showGame, timer])
 
 
   function setFinished(game) {
     setFinishedGames({ ...finishedGames, [`${game}`]: true });
-    setTimeout(() => setShowGame(0), 2500);
+    setTimer(setTimeout(() => setShowGame(0), 2500));
   }
 
   return (
@@ -67,7 +72,7 @@ function App() {
       {showGame === 1 && <DragGame setFinished={setFinished} setShowGame={setShowGame} />}
       {showGame === 2 && <TypeGame setFinished={setFinished} setShowGame={setShowGame} />}
       {showGame === 3 && <SelectGame setFinished={setFinished} setShowGame={setShowGame} />}
-      {/* {dragGameFinished && <h1 style={{ color: 'white' }} >drag game finished!</h1>} */}
+
       <span style={{ position: 'absolute', bottom: '20px', fontWeight: 'bold', color: 'white' }}>VERSION 13-11</span>
     </div >
   )
