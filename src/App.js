@@ -73,7 +73,7 @@ function App() {
       {showGame === 2 && <TypeGame setFinished={setFinished} setShowGame={setShowGame} />}
       {showGame === 3 && <SelectGame setFinished={setFinished} setShowGame={setShowGame} />}
 
-      <span style={{ position: 'absolute', bottom: '20px', fontWeight: 'bold', color: 'white' }}>VERSION 13-11</span>
+      <span style={{ position: 'absolute', bottom: '20px', fontWeight: 'bold', color: 'white' }}>VERSION 12-12</span>
     </div >
   )
 }
